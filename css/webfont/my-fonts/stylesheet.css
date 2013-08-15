@@ -4,10 +4,10 @@
 
 @font-face {
     font-family: 'goods-icons';
-    src: url('ykkj-webfont.eot');
-    src: url('ykkj-webfont.eot?#iefix') format('embedded-opentype'),
+    src: url('ykkj-webfont.eot') format('eot'),
          url('ykkj-webfont.woff') format('woff'),
-         url('ykkj-webfont.svg#goodsIcons') format('svg');
+         url('ykkj-webfont.ttf') format('truetype'),
+         url('ykkj-webfont.svg') format('svg');
     font-weight: normal;
     font-style: normal;
 

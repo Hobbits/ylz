@@ -37,7 +37,7 @@
 <!--header开始-->
 
 
-<nav ng-controller="headerCtrl"
+<header ng-controller="headerCtrl"
      ng-init="tt.pTitle='';tt.bTitle=''"
      class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -59,7 +59,7 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div id="my_headerCollapse" class="collapse navbar-collapse navbar-ex1-collapse">
+    <nav id="my_headerCollapse" class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav">
             <li ng-class="navActiveClass[0]">
                 <a nav-to="/">首页</a>
@@ -72,8 +72,8 @@
             </li>
         </ul>
 
-    </div><!-- /.navbar-collapse -->
-</nav>
+    </nav><!-- /.navbar-collapse -->
+</header>
 
 <!--header结束-->
 <mobile-view>
@@ -89,8 +89,8 @@
 <script defer src="js/controllers/goodsCtrl.js"></script>
 <script defer src="js/controllers/goodslistCtrl.js"></script>
 <script defer src="js/controllers/goodsDetailCtrl.js"></script>
-
 <script defer src="js/controllers/infoCtrl.js"></script>
+
 <script defer src="js/controllers/backwardsCtrl.js"></script>
 
 <script src="libs/bootStrap/bootstrap.min.js"></script>
