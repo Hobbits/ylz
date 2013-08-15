@@ -1,0 +1,62 @@
+<style type="text/css">
+    ul {marign:0 !important;}
+    img {border:none;}
+    ul,li {list-style:none;}
+    #navWrap {widht:100%; height:100%;}
+    #navWrap .navigator {marign-top:0 !important; display:box; display:-webkit-box;  height:100px;}
+    #navWrap .navigator li {box-flex:1; -webkit-box-flex:1;}
+    #navWrap .navigator li div {position:absolute; width:100%; height:80px; }
+</style>
+
+<div data-ng-controller="homeCtrl" class="content" scrollable>
+<div id="banner" style="width:100%; height:200px; background-color:#999999;">banner</div>
+
+<div id="navWrap">
+    <ul class="navigator">
+        <li>
+            <div nav-to="/info">
+                企业简介
+            </div>
+        </li>
+        <li>
+            <div nav-to="/two">
+                企业文化
+            </div>
+        </li>
+        <li>
+            <div>
+                品牌故事
+            </div>
+        </li>
+        <li>
+            <div>
+                银离子故事
+            </div>
+        </li>
+    </ul>
+
+    <ul class="navigator">
+        <li nav-to="/goods">
+            <div>
+                银离子产品
+            </div>
+        </li>
+        <li>
+            <div>
+                银离子知识
+            </div>
+        </li>
+        <li>
+            <div>
+                银离子疑问
+            </div>
+        </li>
+        <li>
+            <div>
+                互动专区
+            </div>
+        </li>
+    </ul>
+</div>
+
+</div>

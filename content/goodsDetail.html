@@ -1,0 +1,123 @@
+<link rel="stylesheet" href="css/webfont/my-fonts/stylesheet.css"/>
+
+
+<div ng-controller="goodsDetailCtrl" class="content" scrollable>
+
+    <!-- <div class="row"> -->
+    <!--     <div class="col-lg-4"> -->
+            <div class="thumbnail row">
+                <div class="col-md-6">
+                    <img  data-src="holder.js/300x200" alt="300x200" src="images/bg.jpg">
+                </div>
+
+                <div class="col-md-6">
+                    <h3 style="text-align:center;">{{goodsDetail.title}}</h3>
+                    <p>
+                        <pre>
+    安全 无毒 无刺激 杀菌效果超好
+    价格￥ 80.00 200.00元/500ml
+    净含量200ml
+    促销限时促销￥ 40.00店铺活动
+    配送 江苏苏州至 苏州
+    快递: 6.00
+    月销量3件
+    4.34.3分累计评价6
+    单笔订单满 2 件包邮（不包邮地区：内蒙古,西藏,甘肃,青海,宁夏,新疆,台湾,香港,澳门,海外）， 送<5元 宝贝优惠券>单笔订单满 3 件包邮（不包邮地区：台湾,香港,澳门,海外）， 送<5元 宝贝优惠券>
+                    </pre>
+                    </p>
+                    <p>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default btn-primary">更多图片</button>
+
+                            <div class="btn-group dropup">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                    联系客服
+                                </button>
+                                <ul class="dropdown-menu" style="margin-bottom:2px;">
+                                    <li ><a href="#" class="icon-home">小王</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#" class="icon-home">小李</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="btn-group dropup">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                    一键分享
+                                </button>
+                                <ul class="dropdown-menu" style="margin-bottom:2px;">
+                                    <li><a href="#" class="icon-home">TX</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#" class="icon-home">Sina</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </p>
+                </div>
+
+
+            </div>
+        <!-- </div> -->
+    <!-- </div> -->
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <!-- Button trigger modal -->
+    <a data-toggle="modal" class="btn btn-primary btn-lg" data-target="#myModal">Launch demo modal</a>
+    <!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> -->
+    <!--     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
+    <!--     <div class="modal-dialog"> -->
+    <!--         <div class="modal-content"> -->
+    <!--             <img src="images/bg.jpg" style="max-width:100%;"> -->
+     <!--       </div> -->
+     <!--     </div> -->
+     <!-- </div> -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <img data-src="holder.js/300x200" alt="" src="images/bg.jpg" >
+                    <img data-src="holder.js/300x200" alt="" src="images/head.jpg" style="display:none;">
+                    <img data-src="holder.js/300x200" alt="" src="images/3.png" style="display:none;">
+
+                </div>
+                  <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+                    <button class="btn btn-primary" hm-tap="showPreviousImg()">上一张</button>
+                    <button class="btn btn-primary" hm-tap="showNextImg()">下一张</button>
+                  </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <script type="text/javascript">
+        function showNextImg(){
+            $("#a").hide();
+            $("#b").show();
+        }
+    </script>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+
+
+
+</div>
+
+
+

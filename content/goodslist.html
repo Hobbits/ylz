@@ -1,0 +1,21 @@
+<div ng-controller="goodslistCtrl" class="content" scrollable>
+
+    <div class="list-group">
+
+            <a class="list-group-item" data-ng-repeat="g in goodslist" nav-to="/goodsDetail/{{g.id}}">
+                <div class="media">
+                    <span class="pull-left">
+                        <img class="media-object" data-ng-src="{{g.img1}}" class="pull-left" style="width:3.5em; height:3.5em; background-size:cover; -webkit-background-size:cover;">
+                    </span>
+                    <div class="media-body">
+                        <h4 class="list-group-item-heading">{{g.title}}</h4>
+                        <p class="list-group-item-text" style="color:orangered;"> ￥ {{g.price}}</p>
+                    </div>
+                </div>
+            </a>
+    </div>
+
+
+</div>
+
+

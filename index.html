@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="target-densitydpi=medium-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>银离子课堂</title>
+
+    <link rel="stylesheet" href="libs/bootStrap/bootstrap.css">
+
+    <!--<link rel="stylesheet" href="libs/iui/iui.css">-->
+    <!--<link rel="stylesheet" href="libs/iui/iui/default-theme.css">-->
+    <script src="libs/jquery.js"></script>
+    <script src="libs/angular.js"></script>
+
+    <script src="libs/angular-hammer/hammer.min.js"></script>
+    <script src="libs/angular-hammer/angular-hammer.js"></script>
+
+    <link rel="stylesheet" href="libs/mobile-nav.css">
+    <script src="libs/mobile-nav.min.js"></script>
+
+    <script src="js/config.js"></script>
+    <script src="js/boot.js"></script>
+
+    <link rel="stylesheet" href="css/need.css">
+    <link rel="stylesheet" href="css/component.css">
+
+    <script src="js/route.js"></script>
+    <script src="js/services/service.js"></script>
+    <script src="js/services/loading.js"></script>
+</head>
+
+<body ng-controller="MainCtrl">
+
+<link rel="stylesheet" href="css/webfont/flatui-fonts/flatui-font.css">
+
+<!--header开始-->
+
+
+<nav ng-controller="headerCtrl"
+     ng-init="tt.pTitle='';tt.bTitle=''"
+     class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+
+        <p ng-if="tt.bTitle" class="navbar-text pull-left my_backbtn">
+            <a hm-tap="historyBack()">
+                <span class="fui-arrow-left"></span>{{tt.bTitle}}
+            </a>
+        </p>
+
+        <button type="button" class="navbar-toggle my_navcollapseBtn" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a nav-to="/" class="navTitle">{{tt.pTitle}}</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div id="my_headerCollapse" class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+            <li ng-class="navActiveClass[0]">
+                <a nav-to="/">首页</a>
+            </li>
+            <li ng-class="navActiveClass[1]">
+                <a nav-to="/info">企业简介</a>
+            </li>
+            <li ng-class="navActiveClass[2]">
+                <a nav-to="/goods">银离子产品</a>
+            </li>
+        </ul>
+
+    </div><!-- /.navbar-collapse -->
+</nav>
+
+<!--header结束-->
+<mobile-view>
+
+</mobile-view>
+
+
+</body>
+<script src="js/controllers/homeCtrl.js"></script>
+<script src="js/controllers/headerCtrl.js"></script>
+
+
+<script defer src="js/controllers/goodsCtrl.js"></script>
+<script defer src="js/controllers/goodslistCtrl.js"></script>
+<script defer src="js/controllers/goodsDetailCtrl.js"></script>
+
+<script defer src="js/controllers/infoCtrl.js"></script>
+<script defer src="js/controllers/backwardsCtrl.js"></script>
+
+<script src="libs/bootStrap/bootstrap.min.js"></script>
+<script type="text/javascript" src="phonegap.js"></script>
+</html>
