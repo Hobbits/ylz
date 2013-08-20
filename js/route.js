@@ -21,7 +21,7 @@ app.config(function($routeProvider) {
             .when("/goods", {
                 templateUrl: "content/goods.html",
                 pageRole:"nav2",
-                pageTitle:"产品"
+                pageTitle:"产品分类"
             })
             .when("/goodslist/:goodslistId", {
                 templateUrl: "content/goodslist.html",
@@ -29,13 +29,37 @@ app.config(function($routeProvider) {
             })
             .when("/goodsDetail/:goodsId", {
                 templateUrl: "content/goodsDetail.html",
-                pageTitle:""
+                pageTitle:"产品详情"
 
             })
             .when("/info", {
                 templateUrl: "content/info.html",
                 pageRole:"nav1",
                 pageTitle:"企业简介",
+                transition: "slide",
+                reverse: false
+            })
+            .when("/news", {
+                templateUrl: "content/news.html",
+                pageTitle:"新闻资讯",
+                transition: "slide",
+                reverse: false
+            })
+            .when("/knowledge", {
+                templateUrl: "content/knowledge.html",
+                pageTitle:"银离子知识",
+                transition: "slide",
+                reverse: false
+            })
+            .when("/summary", {
+                templateUrl: "content/summary.html",
+                pageTitle:"企业概况",
+                transition: "slide",
+                reverse: false
+            })
+            .when("/question", {
+                templateUrl: "content/question.html",
+                pageTitle:"银离子疑问",
                 transition: "slide",
                 reverse: false
             })

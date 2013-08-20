@@ -2,13 +2,15 @@ app.controller("headerCtrl",function($scope,$rootScope,$navigate,headerChanger){
 
     var headerCollapse=$("#my_headerCollapse");
     $rootScope.$on("$routeChangeStart",function(){
-        try{headerCollapse.collapse('hide');}catch(e){}
+        try{
+            headerCollapse.addClass('noTransition');
+            headerCollapse.collapse('hide');
+            setTimeout(function(){headerCollapse.removeClass('noTransition');},450);
+        }catch(e){}
     });
 
 
-    $rootScope.$on("$pageNaved",function(angularEvent,navHistory,curRoute,preRoute){
-
-
+    $scope.$on("$pageNaved",function(angularEvent,navHistory,curRoute,preRoute){
         if(!curRoute.$$route){
             return
         }
@@ -37,12 +39,10 @@ app.controller("headerCtrl",function($scope,$rootScope,$navigate,headerChanger){
                 $scope.navActiveClass=[];
                 $scope.navActiveClass[num]="active";
             }
-        })(curPageRole)
-
-
+        })(curPageRole);
     });
 
-    $rootScope.$on("$headerChangeEvt",function(angularEvt,o){
+    $scope.$on("$headerChangeEvt",function(angularEvt,o){
         if(o && o.pageTitle){
             $scope.tt.pTitle= o.pageTitle;
         }

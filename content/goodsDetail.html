@@ -1,27 +1,32 @@
 <link rel="stylesheet" href="css/webfont/my-fonts/stylesheet.css"/>
+<div ng-controller="goodsDetailCtrl" class="content">
+    <section class="beenBlur pureBlock">
 
-<div ng-controller="goodsDetailCtrl" class="content" scrollable>
-    <div class="thumbnail row">
-        <div class="col-md-6">
-            <img  data-src="holder.js/300x200" alt="300x200" src="images/bg.jpg">
+        <div id='gdAlert' class="pureBlock">
+
         </div>
 
+        <div class="thumbnail row">
+        <div class="col-md-6">
+            <img ng-src="{{imgdir + goodsDetail.img1}}">
+        </div>
         <div class="col-md-6">
             <h3 style="text-align:center;">{{goodsDetail.title}}</h3>
-            <p>
-                {{goodsDetail.detail}}
-            </p>
-            <p>
-                <div class="btn-group">
+            <p style="color:orangered;">{{goodsDetail.intro}}</p>
+            <p><span class="label label-info">促销：</span><span style="color:orangered; font-weight:900;"> ￥{{goodsDetail.price}}</span></p>
+            <p data-ng-bind-html-unsafe="goodsDetail.detail">
+            </p><p>
+            <div class="flexbox-center">
+            <div class="btn-group">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#morePic">更多图片</button>
                     <div class="btn-group dropup">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                             联系客服
                         </button>
                         <ul class="dropdown-menu" style="margin-bottom:2px;">
-                            <li ><a href="#" class="icon-home">小王</a></li>
+                            <li ><a class="icon-home">小王</a></li>
                             <li class="divider"></li>
-                            <li><a href="#" class="icon-home">小李</a></li>
+                            <li><a class="icon-home">小李</a></li>
                         </ul>
                     </div>
                     <div class="btn-group dropup">
@@ -29,34 +34,32 @@
                             一键分享
                         </button>
                         <ul class="dropdown-menu" style="margin-bottom:2px;">
-                            <li><a href="#" class="icon-home">TX</a></li>
+                            <li><a class="icon-home">TX</a></li>
                             <li class="divider"></li>
-                            <li><a href="#" class="icon-home">Sina</a></li>
+                            <li><a class="icon-home">Sina</a></li>
                         </ul>
                     </div>
                 </div>
+            </div>
             </p>
         </div>
     </div>
+    </section>
 
     <!-- Modal -->
-    <div class="modal fade" id="morePic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" data-backdrop="false" id="morePic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-body" id="modal-body">
-                    <img src="images/bg.jpg">
-                    <img src="images/head.jpg" style="display:none;">
-                    <img src="images/3.png" style="display:none;">
-
-                </div>
-                  <div class="modal-footer">
-                    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+                <div class="modal-header" style="text-align:right;">
+                    <button class="btn" onclick="$('#morePic').modal('hide');">关闭</button>
                     <button class="btn btn-primary" hm-tap="showImg(1)">上一张</button>
                     <button class="btn btn-primary" hm-tap="showImg(2)">下一张</button>
-                  </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
+                </div>
+                <div class="modal-body" style="padding-left: 2px;padding-right: 2px;" id="modal-body">
+                    <img ng-src="{{imgdir + imgURL}}" />
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 

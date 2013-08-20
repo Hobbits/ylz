@@ -1,8 +1,9 @@
 /*启动angular*/
-var app=angular.module('myApp', ['ajoslin.mobile-navigate','hmTouchEvents']);
+var app=angular.module('myApp', ['ajoslin.mobile-navigate','hmTouchEvents','Cacher']);
 
 
-app.config(function($httpProvider) {
+app.config(function($httpProvider,$compileProvider) {
+    $compileProvider.urlSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel|sms):/);
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common['X-Requested-With'];
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';

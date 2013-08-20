@@ -1,26 +1,43 @@
-app.controller("goodslistCtrl", function($scope,$routeParams,AJAX,loadingPromp,headerChanger){
+app.controller("goodslistCtrl", function($scope,$routeParams,AJAX,alertBox,loadingPromp,headerChanger){
 
     var goodslistId = $routeParams.goodslistId;
+    $scope.SERVER_ROOT = SERVER_ROOT;
     AJAX({
         url: APP_ACTION["goodslistURL"] + goodslistId,
         bCall: function () {
             loadingPromp.open("正在获取商品列表...");
         },
         sCall: function (d) {
-            console.log(d);
             if(d.status=="ok"){
                 headerChanger.send({pageTitle: d.remark});
                 //$scope.$emit('$headerChangeEvt',{pageTitle: d.remark})
                 $scope.goodslist = d.result;
+
+                if(d.result.length<=0){
+                    alertBox.show({
+                        'where':document.getElementById('glAlert'),
+                        'html':"列表暂为空。",
+                        'type':''
+                    });
+                }
+
             }else{
-//                pop.open(d.result);
+               alertBox.show({
+                'where':document.getElementById('glAlert'),
+                    'html':"数据传输错误！",
+                    'type':'danger'
+               });
             }
         },
         cCall: function () {
             loadingPromp.close();
         },
         eCall:function(){
-            alert("获取商品列表失败！");
+            alertBox.show({
+                'where':document.getElementById('glAlert'),
+                'html':"获取商品列表失败！",
+                'type':'danger'
+            });
         }
     })
 

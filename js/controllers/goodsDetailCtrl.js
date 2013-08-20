@@ -1,42 +1,71 @@
-app.controller("goodsDetailCtrl", function($scope,headerChanger,$routeParams,AJAX,loadingPromp){
+app.controller("goodsDetailCtrl", function($scope,headerChanger,alertBox,$routeParams,AJAX,loadingPromp){
+
+
     var goodsId = $routeParams.goodsId;
-    AJAX({
-        url: APP_ACTION["goodsDetailURL"] + goodsId,
-        bCall: function () {
-            loadingPromp.open("正在获取商品信息...");
-        },
-        sCall: function (d) {
-            console.log(d);
-            if(d.status=="ok"){
-                $scope.goodsDetail = d["result"][0];
-                //headerChanger.send({pageTitle: d.remark});
-//                $scope.$emit('$headerChangeEvt',{pageTitle: d.remark})
+    var all_imgURL = [];
+    $scope.imgdir =APP_ACTION.imgdir;
+
+
+
+    $scope.$on('$pageNaved',function(){
+
+        var ajax1=AJAX({
+            url: APP_ACTION["goodsDetailURL"] + goodsId,
+            bCall: function () {
+                loadingPromp.open("正在获取商品信息...");
+            },
+            sCall: function (d) {
+                console.log(d);
+                if(d.status=="ok"){
+                    var r = d["result"][0];
+                    $scope.goodsDetail = r;
+                    all_imgURL = r.all_img;
+                    $scope.imgURL = all_imgURL[0];
+                }
+            },
+            cCall: function () {
+                loadingPromp.close();
+            },
+            eCall:function(data,status, headers, config){
+                var gdAlert=document.getElementById('gdAlert');
+                if(status){
+                    var q=alertBox.show({
+                        'where':gdAlert,
+                        'html':"服务器通讯错误！",
+                        'type':'danger'
+                    });
+                }else{
+                    var q=alertBox.show({
+                        'where':gdAlert,
+                        'html':"超时！",
+                        'type':'danger'
+                    });
+                }
+
             }
-        },
-        cCall: function () {
-            loadingPromp.close();
-        },
-        eCall:function(){
-            alert("获取商品信息失败！");
-        }
+        })
+
+        var i = 0;
+        $scope.showImg = function(param) {
+            var len = all_imgURL.length;
+            if(param == 1) {
+                i--;
+                if(i < 0) {i = len-1}
+                $scope.imgURL = all_imgURL[i];
+            } else if(param == 2) {
+                i++;
+                if(i >= len) {i = 0}
+                $scope.imgURL = all_imgURL[i];
+            }
+        };
+
+
+        $scope.$on('$destroy',function(e){
+            ajax1.resolve();
+        })
+
+
     })
-
-    $scope.showImg = function(param) {
-        var img = $("#modal-body img:visible");
-        var index = img.index();
-        console.log(img.get(0));
-        console.log(index);
-        img.hide();
-        if(param == 1) {
-            $(".modal-body img").eq(index-1).show();
-        } else if(param == 2) {
-            var len = $(".modal-body img").length;
-            if(index == (len-1)) index = -1;
-            $(".modal-body img").eq(index+1).show();
-        }
-
-
-    }
 
 })
 

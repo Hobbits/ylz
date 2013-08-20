@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="css/webfont/my-fonts/stylesheet.css"/>
+
+<div ng-controller="questionCtrl" class="content" scrollable>
+
+
+<ul class="list-group">
+  <li class="list-group-item">
+    <details class="dl-horizontal">
+        <summary>泰利三佳三家银是怎样的一种产品？</summary>
+        <!-- <dt class="icon-pet">问：泰利三佳三家银是怎样的一种产品？</dt> -->
+        <dd class="icon-home">答：不错不错</dd>
+    </details>
+  </li>
+  <li class="list-group-item">
+    <details class="dl-horizontal">
+        <summary>泰利三佳三家银是怎样的一种产品？</summary>
+        <!-- <dt class="icon-pet">问：泰利三佳三家银是怎样的一种产品？</dt> -->
+        <dd class="icon-home">答：不错不错</dd>
+    </details>
+    </li>
+
+  <li class="list-group-item dl-horizontal">
+    <dt>Description lists</dt>
+    <dd>A description list is perfect for defining terms.</dd>
+  </li>
+
+  <li class="list-group-item">
+    <dl class="dl-horizontal">
+    <dt>Description lists</dt>
+    <dd>A description list is perfect for defining terms.</dd>
+    </dl>
+  </li>
+
+  <li class="list-group-item" id="text">
+  <dl class="dl-horizontal">
+    <dt>泰利三佳三家银是怎样的一种产品？</dt>
+    <dd>A description list is perfect for defining termsA description list is perfect for defining termsA description list is perfect for defining terms.</dd>
+    </dl>
+    </li>
+
+  <li class="list-group-item">Vestibulum at eros</li>
+</ul>
+
+
+</div>
+<script type="text/javascript">
+    $("#text").find('dd').hide()
+     $("#text").find('dt').click(function() {
+        $("#text").find('dd').slideToggle();
+    });
+</script>

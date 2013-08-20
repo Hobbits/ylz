@@ -1,7 +1,51 @@
-<div ng-controller="infoCtrl" class="content" scrollable>
-  <ul>
-    <li><a nav-to="/popup">Let's see a modal!</a></li>
-  </ul>
+<style>
+    #infoTable {
+        background-color: #ffffff;
+    }
+</style>
+<div ng-controller="infoCtrl" class="content">
+    <div id='infoAlert' class="pureBlock"></div>
+    <table id="infoTable" class="table table-bordered table-striped">
+        <tbody>
+            <tr >
+                <td colspan="2"><img ng-src="{{imgdir + companyInfo.logo}}" /></td>
+            </tr>
+            <tr>
+                <td>企业名</td>
+                <td>{{companyInfo.companyname}}</td>
+            </tr>
+
+            <tr>
+                <td>联系人</td>
+                <td>{{companyInfo.contact}}</td>
+            </tr>
+
+            <tr data-ng-repeat="i in companyInfo.tel">
+                <td rowspan="{{companyInfo.tel.length}}" ng-if="$index === 0">联系电话</td>
+                <td><a ng-href="tel:{{i}}">{{i}}</a></td>
+            </tr>
+
+            <tr>
+                <td>微博账号</td>
+                <td>{{companyInfo.micro_account}}</td>
+            </tr>
+            <tr>
+                <td>qq账号</td>
+                <td>{{companyInfo.qq_account}}</td>
+            </tr>
+            <tr>
+                <td>微信账号</td>
+                <td>{{companyInfo.wechat_account}}</td>
+            </tr>
+            <tr>
+                <td>公司网址</td>
+                <td>{{companyInfo.url}}</td>
+            </tr>
+
+            <tr>
+                <td colspan="2" data-ng-bind-html-unsafe="companyInfo.description">
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
-
-

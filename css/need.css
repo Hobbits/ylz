@@ -1,7 +1,8 @@
+html{width: 100%;height: 100%}
 body {
     margin: 0;
     font-family: Helvetica;
-    background: #F6F6DB
+    /* background: #F6F6DB */
     -webkit-user-select: none;
     -webkit-text-size-adjust: none;
     overflow: hidden;
@@ -12,16 +13,97 @@ body {
      max-width: 100%;
      max-height: 100%;
  }
+ .pureBlock{
+     display: block;
+     margin: 0;
+     padding: 0;
+     position: static;
+ }
+ .noTransition{
+     -webkit-transition:none;
+     transition: none;
+ }
+ .flexbox-center{
+     /* Internet Explorer 10 */
+     display:-ms-flexbox;
+     -ms-flex-pack:center;
+     -ms-flex-align:center;
+
+     /* Firefox */
+     display:-moz-box;
+     -moz-box-pack:center;
+     -moz-box-align:center;
+
+     /* Safari, Opera, and Chrome */
+     display:-webkit-box;
+     -webkit-box-pack:center;
+     -webkit-box-align:center;
+
+     align-items: center;
+
+     /* W3C */
+     display:box;
+     box-pack:center;
+     box-align:center;
+ }
+@-webkit-keyframes animate-cloud {
+    from {
+        background-position: 1200px 100%
+    }
+    to {
+        background-position: 0 100%
+    }
+}
+@keyframes animate-cloud {
+    from {
+        background-position: 1200px 100%
+    }
+    to {
+        background-position: 0 100%
+    }
+}
+#water{
+    position: fixed;
+    left: 0;right: 0;bottom: 0;
+    height: 6.5em;
+    /*#EEF8FE*/
+    background: url('../images/wtbg.png') repeat-x 50% 100%;
+    background-size: auto 100%;
+    -webkit-animation: animate-cloud 35s linear infinite;
+    animation: animate-cloud 35s linear infinite;
+    opacity: 0.8;
+}
+@media screen and (min-width: 768px){
+    #water{
+        -webkit-animation: none;
+        animation: none;
+    }
+}
+
+#my_header{
+    position: absolute;
+}
+
+.modal{
+    /*修复iOS遮罩bug*/
+    position: absolute;
+    z-index:1040;
+}
+.modal-backdrop{
+    opacity: 0;
+    position: absolute;
+    z-index: 1039;
+}
 .content {
+    background-color: #FFF;
     margin: 0;
-    padding: 0;
     width: 100%;
     position: absolute;
     left: 0;
-    top: 50px;
+    top: 50px; /*关键高度*/
     bottom: 0;
     right: 0;
-    background: #F6F6DB;
+
 
     overflow-y: scroll;
     overflow-x: hidden;
@@ -31,12 +113,19 @@ body {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     padding: .8em;
+    padding-bottom: 6em;
 }
 
-@media (max-width: 768px) {
+.my_backbtn{
+    height: 50px;
+    line-height: 50px;
+    margin-top: 0;
+    margin-bottom: 0;
 
+}
+@media (max-width: 768px) {
     .my_backbtn{
-        padding: 0;
+        padding: 0 0 0 15px;
     }
     .my_navcollapseBtn .icon-bar{
         background-color: #428bca !important;
@@ -64,4 +153,13 @@ body {
         margin-right: 5px;
         margin-left: 35px;
     }
+}
+
+.my_blur .beenBlur{
+    -webkit-filter: blur(8px);
+    -moz-filter: blur(8px);
+    -o-filter: blur(8px);
+    -ms-filter: blur(8px);
+    filter: blur(8px);
+    filter: url(../images/blur.svg#blursvgblur8);
 }
