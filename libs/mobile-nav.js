@@ -228,6 +228,7 @@ angular.module('ajoslin.mobile-navigate')
                 }
             }
             nav.back = function() {
+                try{
                 if (navHistory.length > 0) {
                     var previous = navHistory[navHistory.length-1][0];
                     $location.path(previous.path());
@@ -239,6 +240,7 @@ angular.module('ajoslin.mobile-navigate')
                     return true;
                 }
                 return false;
+                }catch(e){return false}
             };
 
             return nav;

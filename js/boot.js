@@ -54,24 +54,5 @@ app.directive("touchact",function(){
     }
 });
 
-app.run(['$navigate', '$rootScope', function($navigate, $rootScope) {
-    //Android back button functionality for phonegap
-    document.addEventListener("deviceready", function() {
-        document.addEventListener("backbutton", function() {
-            $rootScope.$apply(function() {
-                var history=$navigate.getHistory();
-                if(history.length>=1){
-                    var last=history[history.length-1];
-                    if(last[0]=="main"){
-                        navigator.app.exitApp();
-                    }
-                }else{
-                    navigator.app.exitApp();
-                }
-
-            });
-        });
-    });
-}]);
 
 

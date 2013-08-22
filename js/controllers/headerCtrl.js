@@ -20,7 +20,7 @@ app.controller("headerCtrl",function($scope,$rootScope,$navigate,headerChanger){
 
         $scope.tt.pTitle=curRoute.$$route['pageTitle'];
         if(curPageRole=="main"){
-            navHistory=$navigate.eraseHistory('main',curRoute);
+            navHistory=$navigate.eraseHistory('page',curRoute);
         }
         var l=navHistory.length;
         var pre=navHistory[l-2];
