@@ -1,6 +1,9 @@
 <link rel="stylesheet" href="css/webfont/my-fonts/stylesheet.css"/>
+        <style>
+            .row{margin-right: 0;margin-left: 0;}
+        </style>
 <div ng-controller="goodsDetailCtrl" class="content">
-    <section class="beenBlur pureBlock">
+
 
         <div id='gdAlert' class="pureBlock">
 
@@ -44,14 +47,14 @@
             </p>
         </div>
     </div>
-    </section>
+
 
     <!-- Modal -->
     <div class="modal fade" data-backdrop="false" id="morePic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header" style="text-align:right;">
-                    <button class="btn" onclick="$('#morePic').modal('hide');">关闭</button>
+                    <button class="btn btn-default" onclick="$('#morePic').modal('hide');">关闭</button>
                     <button class="btn btn-primary" hm-tap="showImg(1)">上一张</button>
                     <button class="btn btn-primary" hm-tap="showImg(2)">下一张</button>
                 </div>

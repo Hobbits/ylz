@@ -4,6 +4,7 @@ app.controller("goodslistCtrl", function($scope,$routeParams,AJAX,alertBox,loadi
     $scope.SERVER_ROOT = SERVER_ROOT;
     AJAX({
         url: APP_ACTION["goodslistURL"] + goodslistId,
+        cache:true,
         bCall: function () {
             loadingPromp.open("正在获取商品列表...");
         },

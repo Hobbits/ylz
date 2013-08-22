@@ -34,10 +34,44 @@ app.directive("navTo",['$navigate', function($navigate){
                     }
 
                 }
+            });
+        }
+    }
+}]);
 
+app.directive("touchact",function(){
+    return {
+        restrict: 'A',
+        link: function (scope,element,attrs) {
+            var classname=attrs['touchact'] || 'navfocus';
+            element.bind("touchstart",function(){
+                try{this.classList.add(classname);}catch(e){}
+            });
+            element.bind("touchend",function(){
+                try{this.classList.remove(classname);}catch(e){}
             })
         }
     }
+});
+
+app.run(['$navigate', '$rootScope', function($navigate, $rootScope) {
+    //Android back button functionality for phonegap
+    document.addEventListener("deviceready", function() {
+        document.addEventListener("backbutton", function() {
+            $rootScope.$apply(function() {
+                var history=$navigate.getHistory();
+                if(history.length>=1){
+                    var last=history[history.length-1];
+                    if(last[0]=="main"){
+                        navigator.app.exitApp();
+                    }
+                }else{
+                    navigator.app.exitApp();
+                }
+
+            });
+        });
+    });
 }]);
 
 

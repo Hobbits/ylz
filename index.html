@@ -14,7 +14,11 @@
     <script src="libs/angular-hammer/hammer.min.js"></script>
     <script src="libs/angular-hammer/angular-hammer.js"></script>
 
-    <link rel="stylesheet" href="libs/mobile-nav.css">
+    <!--<link rel="stylesheet" href="libs/mobile-nav.css">-->
+
+    <!--Android时启用-->
+    <link rel="stylesheet" href="libs/mobile-nav-android.css">
+
     <script src="libs/mobile-nav.min.js"></script>
 
     <script src="js/config.js"></script>
@@ -39,7 +43,7 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
 
-        <p hm-tap="historyBack()"
+        <p hm-tap="historyBack()" touchact="skew"
            ng-if="tt.bTitle" class="navbar-text pull-left my_backbtn">
             <a><span class="glyphicon glyphicon-chevron-left"></span>{{tt.bTitle}}</a>
         </p>
