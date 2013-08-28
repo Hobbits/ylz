@@ -1,9 +1,10 @@
 <div ng-controller="summaryCtrl" class="content">
     <link rel="stylesheet" href="css/nganimate.css">
     <link rel="stylesheet" href="css/summary.css">
+    <link rel="stylesheet" href="css/adsorbNav.css">
 
  <section id="tabbigWrap" class="pureBlock">
-<ul id="myTab" class="nav nav-tabs">
+<ul id="myTab" class="nav nav-tabs adsorbNav">
     <li class="active">
         <a data-toggle="tab" hm-tap="getContent(1)">企业文化</a>
     </li>
@@ -17,18 +18,31 @@
         <a data-toggle="tab" hm-tap="getContent(4)">发展历程</a>
     </li>
 </ul>
+
+     <!--吸附式二级菜单修复 -->
+     <div id="lv2navfix" class="pureBlock"></div>
+     <script>
+         (function(){
+             setTimeout(function(){
+                 var tabH=$('#myTab>li').height();
+                 var fixer=$('#lv2navfix');
+                 fixer.height(tabH);},1);
+         })()
+     </script>
+
+
 <div class="tab-content" id="tabcWrap" ng-animate="animateType" ng-switch on="summary.summaryIndex">
 
-        <div class="tabc" ng-bind-html-unsafe="summary.content1" ng-switch-when="1" id="home">
+        <div class="tabc" ng-bind-html="summary.content1" ng-switch-when="1" id="home">
 
         </div>
-        <div class="tabc" ng-bind-html-unsafe="summary.content2" ng-switch-when="2"  id="profile">
+        <div class="tabc" ng-bind-html="summary.content2" ng-switch-when="2"  id="profile">
 
         </div>
-        <div class="tabc" ng-bind-html-unsafe="summary.content3" ng-switch-when="3"  id="dropdown1">
+        <div class="tabc" ng-bind-html="summary.content3" ng-switch-when="3"  id="dropdown1">
 
         </div>
-        <div class="tabc" ng-bind-html-unsafe="summary.content4" ng-switch-when="4" id="dropdown2">
+        <div class="tabc" ng-bind-html="summary.content4" ng-switch-when="4" id="dropdown2">
 
         </div>
 

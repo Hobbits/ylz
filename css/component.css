@@ -1,10 +1,36 @@
-.blueBack{
-    background-color: #428bca;
+.blueText{color:#428bca;}
+.blackBack{background-color: #222222}
+.blueBack{background-color: #428bca;}
+.blueBack5{
+    background-color: rgba(66,139,202,.5);
 }
 .tx-white{
     color: #ffffff;
 }
 
+.flexbox-center{
+    /* Internet Explorer 10 */
+    display:-ms-flexbox;
+    -ms-flex-pack:center;
+    -ms-flex-align:center;
+
+    /* Firefox */
+    display:-moz-box;
+    -moz-box-pack:center;
+    -moz-box-align:center;
+
+    /* Safari, Opera, and Chrome */
+    display:-webkit-box;
+    -webkit-box-pack:center;
+    -webkit-box-align:center;
+
+    align-items: center;
+
+    /* W3C */
+    display:box;
+    box-pack:center;
+    box-align:center;
+}
 
 img {border:none;}
 a.activeLink {

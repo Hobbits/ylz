@@ -1,3 +1,3 @@
-app.controller("homeCtrl",function($scope,$rootScope,loadingPromp){
+app.controller("homeCtrl",function($scope,$rootScope){
 
 })

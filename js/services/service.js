@@ -1,47 +1,3 @@
-app.factory('AJAX', function($http,$q){
-    /*url p bCall sCall eCall*/
-      var send=function(o){
-
-          var canceler = $q.defer();
-
-          var sendmethod=o.method || "GET";
-          if(typeof(o.bCall)=="function"){o.bCall();}
-
-          var httpPatams={
-              cache: o.cache||false
-          };
-          httpPatams.url= o.url;
-          httpPatams.method =sendmethod;
-          if(sendmethod=="GET"){
-              httpPatams.params=o.p || {};              
-          }else{
-              httpPatams.data=o.p || null;
-          };
-
-          /*设定超时*/
-          httpPatams.timeout= o.timeout || canceler.promise || 15000;
-
-              $http(httpPatams).success(function(data, status, headers, config){
-                      if(typeof(o.sCall)=="function"){
-                            o.sCall(data,status, headers, config);
-                          };
-                      if(typeof(o.cCall)=="function"){
-                          o.cCall(data,status, headers, config);
-                      };
-                  }).error(function(data,status, headers, config){
-                      if(typeof(o.eCall)=="function"){
-                          o.eCall(data,status, headers, config);
-                      };
-                      if(typeof(o.cCall)=="function"){
-                          o.cCall(data,status, headers, config);
-                      };
-                  });
-
-          return canceler;
-      };
-      return send;
-});
-
 app.factory('headerChanger', function($rootScope){
     return {
         send:function(o){
@@ -115,6 +71,62 @@ app.factory('alertBox', function(){
                 }
                 return returnObj;
             }
+        }
+    };
+});
+
+
+app.factory('paginationServ', function(){
+    /*依赖关系： mainCtrl.js -> pagination*/
+    var curPage=0;
+    return {
+        status:false,/*显示状态*/
+        changePagebtn:function(scope,o){
+            scope.$emit('changePaginationBtn',o);
+        },
+        toogle:function(scope,bol){
+            scope.$emit('tooglePagination',bol);
+        },
+        fliped:function(scope,obj){
+            scope.$emit('paginationSuccess',obj);
+        },
+        setCurPage:function(num){
+            if(angular.isNumber(num) && num >0){
+                curPage=num;
+            }
+        },
+        getCurPage:function(){
+            return curPage;
+        },
+        setter:function(scope,pNum,tNum){
+            var self=this;
+            var setting=function(){
+                var cpage=self.getCurPage();
+
+                if(cpage>=1 && cpage<=tNum){
+                    /*举例：翻页完成后启用上一页，禁用下一页，修改里面的字为2/5*/
+                    self.fliped(scope,{
+                        changeText:cpage+"/"+tNum,
+                        curPage: cpage
+                    });
+                }
+                if(cpage<=1){
+                    self.changePagebtn(scope,{"pre":false});
+                    self.setCurPage(1);
+                }else{
+                    self.changePagebtn(scope,{"pre":true});
+                }
+                if(cpage>=tNum){
+                    self.changePagebtn(scope,{"next":false});
+                    self.setCurPage(tNum);
+                }else{
+                    self.changePagebtn(scope,{"next":true});
+                }
+
+            }
+            self.toogle(scope,true);
+            self.setCurPage(pNum);
+            setting();
         }
     };
 });

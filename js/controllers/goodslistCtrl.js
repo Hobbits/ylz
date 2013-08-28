@@ -1,7 +1,7 @@
-app.controller("goodslistCtrl", function($scope,$routeParams,AJAX,alertBox,loadingPromp,headerChanger){
+app.controller("goodslistCtrl", function($scope,$routeParams,AJAX,alertBox,headerChanger){
 
     var goodslistId = $routeParams.goodslistId;
-    $scope.SERVER_ROOT = SERVER_ROOT;
+    $scope.imgdir = APP_ACTION.imgdir;
     AJAX({
         url: APP_ACTION["goodslistURL"] + goodslistId,
         cache:true,

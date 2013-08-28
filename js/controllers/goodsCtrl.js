@@ -1,4 +1,4 @@
-app.controller("goodsCtrl", function($scope,AJAX,loadingPromp,CacheLocal){
+app.controller("goodsCtrl", function($scope,AJAX,CacheLocal){
     var ajax1=AJAX({
         url: APP_ACTION["goodsURL"],
         cache:CacheLocal,

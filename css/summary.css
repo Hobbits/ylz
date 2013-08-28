@@ -16,5 +16,5 @@
 .tabc{width: 100%;}
 .tabc img{max-width: 100% !important;}
 @media (min-width: 768px) {
-    #tabbigWrap{width: 70%;margin: 0 auto}
+    #tabbigWrap{width: 70%;margin: 0 auto;font-size: 1.25em;}
 }

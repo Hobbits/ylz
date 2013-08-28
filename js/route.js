@@ -1,23 +1,5 @@
 app.config(function($routeProvider) {
         $routeProvider
-            .when("/two", {
-                templateUrl: "content/page2.html",
-                pageTitle:"Page2",
-                transition: "modal" //this is overwritten by the go() in home.html
-            })
-            .when("/popup", {
-                templateUrl: "content/popup.html",
-                pageTitle:"Popup",
-                transition: "modal"
-            })
-            .when("/monkey", {
-                templateUrl: "content/monkey.html"
-            })
-            .when("/backwards", {
-                templateUrl: "content/backwards.html",
-                pageTitle:"后跳",
-                reverse: true
-            })
             .when("/goods", {
                 templateUrl: "content/goods.html",
                 pageRole:"nav2",
@@ -32,18 +14,27 @@ app.config(function($routeProvider) {
                 pageTitle:"产品详情"
 
             })
+            .when("/companycard", {
+                templateUrl: "content/companyCard.html",
+                pageTitle:"企业名片",
+                transition: "slide"
+            })
             .when("/info", {
                 templateUrl: "content/info.html",
                 pageRole:"nav1",
                 pageTitle:"企业简介",
-                transition: "slide",
-                reverse: false
+                transition: "slide"
             })
             .when("/news", {
                 templateUrl: "content/news.html",
-                pageTitle:"新闻资讯",
+                pageTitle:"新闻列表",
+                transition: "slide"
+            })
+            .when("/newsDetail/:newsId", {
+                templateUrl: "content/newsDetail.html",
+                pageTitle:"",
                 transition: "slide",
-                reverse: false
+                pageTitle:"新闻内容"
             })
             .when("/knowledge", {
                 templateUrl: "content/knowledge.html",
@@ -62,6 +53,17 @@ app.config(function($routeProvider) {
                 pageTitle:"银离子疑问",
                 transition: "slide",
                 reverse: false
+            })
+            .when("/login", {
+                templateUrl: "content/login.html",
+                pageTitle:"登录",
+                transition: "slide",
+                reverse: false
+            })
+            .when("/register", {
+                templateUrl: "content/register.html",
+                pageTitle:"注册",
+                transition: "modal",
             })
             .when("/", {
                 templateUrl: "content/home.html",

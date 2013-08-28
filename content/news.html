@@ -1,34 +1,49 @@
-<style type="text/css">
-    #newsTab li {width:50%;}
-</style>
 <div ng-controller="newsCtrl" class="content" scrollable>
-
-    <ul id="newsTab" class="nav nav-tabs">
-        <li class="active">
-            <a data-toggle="tab" data-target="#tradeTrend">行业动态</a>
+    <link rel="stylesheet" href="css/nganimate.css">
+    <link rel="stylesheet" href="css/news.css">
+    <link rel="stylesheet" href="css/adsorbNav.css">
+    <ul id="newsTab" class="nav nav-pills adsorbNav">
+        <li ng-class="{1:'active', 2:''}[news.newscatIndex]" >
+            <a hm-tap="getContent(1)" class="trade-trend">行业动态</a>
         </li>
-        <li>
-            <a data-toggle="tab" data-target="#companyNews">公司新闻</a>
+        <li ng-class="{1:'', 2:'active'}[news.newscatIndex]">
+            <a hm-tap="getContent(2)" class="company-news">公司新闻</a>
         </li>
     </ul>
+    <!--吸附式二级菜单修复 -->
+    <div id="lv2navfix" class="pureBlock"></div>
+    <script>
+        (function(){
+            var tabH=$('.adsorbNav').height();
+            var fixer=$('#lv2navfix');
+            fixer.height(tabH);
+        })()
+    </script>
 
-
-    <div id="newsTabContent" class="tab-content">
-        <div class="tab-pane fade active in" id="tradeTrend">
+    <div id='newsAlert' class="pureBlock"></div>
+    <div id="newsTabContent" class="tab-content" ng-animate="animateType" ng-switch on="news.newscatIndex">
+        <div class="tabc" ng-switch-when="1">
             <p>
                 <ul class="list-group">
-                    <li class="list-group-item icon-edit"><a>Cras justo odioCras justo odioCras justo odioCras justo odio</a><span class="pull-right">04-12</span></li>
-                    <li class="list-group-item icon-edit"><a>Cras justo odioC odio</a><span class="pull-right">04-10</span></li>
+                    <li data-ng-repeat="n in newsList" class="list-group-item icon-edit" style="overflow:hidden;"><a nav-to="/newsDetail/{{n.aid}}">{{n.title}}</a><time class="pull-right" style="font-size:0.8em;">{{n.createtime}}</time></li>
                 </ul>
             </p>
+
+            <div class="alert" ng-if="noNews1">没有行业动态！</div>
         </div>
-        <div class="tab-pane fade" id="companyNews">
+
+        <div class="tabc" ng-switch-when="2">
             <p>
                 <ul class="list-group">
-                    <li class="list-group-item icon-edit"><a>Cras justo o odio</a><span class="pull-right">04-12</span></li>
+                    <li data-ng-repeat="n in newsList" class="list-group-item icon-edit" style="overflow:hidden;"><a nav-to="/newsDetail/{{n.aid}}">{{n.title}}</a><time class="pull-right" style="font-size:0.8em;">{{n.createtime}}</time></li>
                 </ul>
                 
             </p>
+            
+            <div class="alert" ng-if="noNews2">没有公司新闻！</div>
         </div>
+
     </div>
+
+
 </div>

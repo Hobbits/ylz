@@ -1,17 +1,35 @@
-app.controller("summaryCtrl",function($scope,AJAX,loadingPromp,CacheLocal){
+app.controller("summaryCtrl",function($scope,AJAX){
+
+//    var naved=false;
+//    $scope.$on('$pageNaved',function(){
+//        if(naved){return}
+//        naved=true;
+//        var sw1=new myswipe({
+//            jqo:document.getElementById('tabcWrap'),
+//            actThreshold:1,
+//            XThreshold:1,
+//            touchEndCall:function(result,dv){
+//                alert(result);
+//            }
+//        });
+//    })
+
+
+
     $scope.summary={}
 
     var getAct=function(index,cb){
         AJAX({
             url: APP_ACTION["summaryURL"]+index,
-            cache:CacheLocal,
+            cache:true,
             bCall: function () {
                 loadingPromp.open("正在获取信息...");
             },
             sCall: function (d) {
-                if(d.status == "ok" && d.result[0]) {
+                console.log(d);
+                if(d.status == "ok" && d.result) {
                     if(angular.isFunction(cb)){
-                        cb(index,d.result[0].content);
+                        cb(index,d.result.content);
                     }
                 }else{
                     cb(index,'<div class="alert">看来此页是空的.</div>');

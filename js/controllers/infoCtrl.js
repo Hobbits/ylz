@@ -1,4 +1,4 @@
-app.controller("infoCtrl",function($scope,AJAX,alertBox,loadingPromp){
+app.controller("infoCtrl",function($scope,AJAX,alertBox){
     $scope.imgdir = APP_ACTION.imgdir;
     AJAX({
         url: APP_ACTION["infoURL"],

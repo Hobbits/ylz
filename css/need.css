@@ -23,29 +23,7 @@ body {
      -webkit-transition:none;
      transition: none;
  }
- .flexbox-center{
-     /* Internet Explorer 10 */
-     display:-ms-flexbox;
-     -ms-flex-pack:center;
-     -ms-flex-align:center;
 
-     /* Firefox */
-     display:-moz-box;
-     -moz-box-pack:center;
-     -moz-box-align:center;
-
-     /* Safari, Opera, and Chrome */
-     display:-webkit-box;
-     -webkit-box-pack:center;
-     -webkit-box-align:center;
-
-     align-items: center;
-
-     /* W3C */
-     display:box;
-     box-pack:center;
-     box-align:center;
- }
 @-webkit-keyframes animate-cloud {
     from {
         background-position: 1200px 100%
@@ -113,7 +91,6 @@ body {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     padding: .8em;
-    padding-bottom: 6em;
 }
 
 .my_backbtn{
@@ -144,7 +121,7 @@ body {
     line-height: 20px;
     color: #FFF;
     text-align: center;
-
+    font-weight: bold;
 }
 @media screen and (min-width: 768px){
     .navTitle {
@@ -162,4 +139,10 @@ body {
     -ms-filter: blur(8px);
     filter: blur(8px);
     filter: url(../images/blur.svg#blursvgblur8);
+}
+
+footer{
+    position: fixed;
+    left: 0;right: 0;bottom: 0;
+    width:100%;height: auto;
 }

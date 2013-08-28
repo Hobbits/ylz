@@ -10,14 +10,14 @@
         </div>
 
         <div class="thumbnail row">
-        <div class="col-md-6">
+        <div class="col-md-6 text-center">
             <img ng-src="{{imgdir + goodsDetail.img1}}">
         </div>
         <div class="col-md-6">
             <h3 style="text-align:center;">{{goodsDetail.title}}</h3>
             <p style="color:orangered;">{{goodsDetail.intro}}</p>
             <p><span class="label label-info">促销：</span><span style="color:orangered; font-weight:900;"> ￥{{goodsDetail.price}}</span></p>
-            <p data-ng-bind-html-unsafe="goodsDetail.detail">
+            <p data-ng-bind-html="goodsDetail.detail">
             </p><p>
             <div class="flexbox-center">
             <div class="btn-group">

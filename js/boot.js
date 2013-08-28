@@ -1,12 +1,10 @@
 /*启动angular*/
-var app=angular.module('myApp', ['ajoslin.mobile-navigate','hmTouchEvents','Cacher']);
+var app=angular.module('myApp', ['ngSanitize','regou.ajaxNormalizer','ajoslin.mobile-navigate','hmTouchEvents','Cacher','ngStorage']);
 
 
 app.config(function($httpProvider,$compileProvider) {
     $compileProvider.urlSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel|sms):/);
-    $httpProvider.defaults.useXDomain = true;
-    delete $httpProvider.defaults.headers.common['X-Requested-With'];
-    $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+
 });
 
 app.controller('MainCtrl', function($scope, $navigate) {

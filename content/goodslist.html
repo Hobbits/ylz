@@ -10,7 +10,7 @@
             <a class="list-group-item" data-ng-repeat="g in goodslist" nav-to="/goodsDetail/{{g.id}}">
                 <div class="media">
                     <span class="pull-left">
-                        <div class="media-object productImg" style="background-image:url({{SERVER_ROOT + g.img1}});"></div>
+                        <div class="media-object productImg" style="background-image:url({{imgdir + g.img1}});"></div>
                     </span>
                     <div class="media-body">
                         <h4 class="list-group-item-heading">{{g.title}}</h4>

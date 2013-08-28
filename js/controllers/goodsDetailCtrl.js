@@ -1,4 +1,4 @@
-app.controller("goodsDetailCtrl", function($scope,headerChanger,alertBox,$routeParams,AJAX,loadingPromp){
+app.controller("goodsDetailCtrl", function($scope,headerChanger,alertBox,$routeParams,AJAX){
 
 
     var goodsId = $routeParams.goodsId;
@@ -6,9 +6,10 @@ app.controller("goodsDetailCtrl", function($scope,headerChanger,alertBox,$routeP
     $scope.imgdir =APP_ACTION.imgdir;
 
 
-
+    var naved=false;
     $scope.$on('$pageNaved',function(){
-
+        if(naved){return}
+        naved=true;
         var ajax1=AJAX({
             url: APP_ACTION["goodsDetailURL"] + goodsId,
             bCall: function () {

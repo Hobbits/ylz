@@ -22,16 +22,15 @@
     <script src="libs/mobile-nav.min.js"></script>
 
     <script src="js/config.js"></script>
-    <script src="js/boot.js"></script>
+
 
     <link rel="stylesheet" href="css/need.css">
     <link rel="stylesheet" href="css/component.css">
+    <link rel="stylesheet" href="css/pagination.css">
 
-    <script src="js/controllers/homeCtrl.js"></script>
-    <script src="js/controllers/headerCtrl.js"></script>
 </head>
 
-<body ng-controller="MainCtrl">
+<body ng-controller="mainCtrl">
 
 
 <!--header开始-->
@@ -78,13 +77,41 @@
 <mobile-view>
 
 </mobile-view>
- <div id="water">
 
- </div>
+<footer>
+    <div ng-if="pagination" id='pagination' class="row" >
+         <!--data-ng-controller="paginationCtrl"-->
+
+        <div hm-tap="pagination.prePage()" touchact="skewTop"
+             id="prePage" class="pageinationBtn col-xs-4 flexbox-center {{pagination.prePagedisable}}">
+            <span class="glyphicon glyphicon-circle-arrow-left"></span>
+        </div>
+        <div id="pageNow" class="pageinationBtn col-xs-4 flexbox-center">
+            <span ng-bind="pagination.text"></span>
+        </div>
+        <div hm-tap="pagination.nextPage()" touchact="skewTop"
+                id="pageNext" class="pageinationBtn col-xs-4 flexbox-center {{pagination.nextPagedisable}}">
+            <span class="glyphicon glyphicon-circle-arrow-right"></span>
+        </div>
+
+    </div>
+</footer>
+ <!--<div id="water">-->
+
+ <!--</div>-->
 
 <div id="ajax-loading"><h1>...</h1></div>
 
 </body>
+
+<script src="js/services/ajaxNormalizerModule.js"></script>
+<script src="js/services/ngStorage.js"></script>
+<script src="libs/angular-sanitize.min.js"></script>
+
+<script src="js/boot.js"></script>
+
+<script src="js/controllers/headerCtrl.js"></script>
+<script src="js/controllers/homeCtrl.js"></script>
 
 <script src="js/route.js"></script>
 <script src="js/services/service.js"></script>
@@ -92,20 +119,29 @@
 <script src="js/services/loading.js"></script>
 
 
-
+<script src="js/controllers/mainCtrl.js"></script>
 
 <script defer src="js/controllers/goodsCtrl.js"></script>
 <script defer src="js/controllers/goodslistCtrl.js"></script>
 <script defer src="js/controllers/goodsDetailCtrl.js"></script>
+
+<script defer src="js/controllers/cardCtrl.js"></script>
 <script defer src="js/controllers/infoCtrl.js"></script>
 <script defer src="js/controllers/newsCtrl.js"></script>
+<script defer src="js/controllers/newsDetailCtrl.js"></script>
 <script defer src="js/controllers/knowledgeCtrl.js"></script>
 <script defer src="js/controllers/summaryCtrl.js"></script>
 <script defer src="js/controllers/questionCtrl.js"></script>
+<script defer src="js/controllers/loginCtrl.js"></script>
+<script defer src="js/controllers/registerCtrl.js"></script>
 
-<script defer src="js/controllers/backwardsCtrl.js"></script>
+
 
 <script defer src="libs/bootStrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="phonegap.js"></script>
 <script src="js/other.js"></script>
+
+<!--<script src="js/other/myswipe.js"></script>-->
+
+
 </html>
