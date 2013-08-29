@@ -27,7 +27,7 @@
         <div class="col-lg-offset-2 col-lg-10" >
             <div class="row">
                 <div class="col-xs-6">
-                    <button class="btn btn-default pull-right" nav-to="/register">注册</button>
+                    <button class="btn btn-default pull-right" onclick="return false" nav-to="/register">注册</button>
                 </div>
                 <div class="col-xs-6">
                     <button type="submit" class="btn btn-primary pull-left"  ng-init="subBtn={isOff:false,submitText:'登录'}" ng-disabled="subBtn.isOff">{{subBtn.submitText}}</button>

@@ -32,7 +32,6 @@ app.config(function($routeProvider) {
             })
             .when("/newsDetail/:newsId", {
                 templateUrl: "content/newsDetail.html",
-                pageTitle:"",
                 transition: "slide",
                 pageTitle:"新闻内容"
             })
@@ -57,13 +56,12 @@ app.config(function($routeProvider) {
             .when("/login", {
                 templateUrl: "content/login.html",
                 pageTitle:"登录",
-                transition: "slide",
-                reverse: false
+                transition: "modal"
             })
             .when("/register", {
                 templateUrl: "content/register.html",
                 pageTitle:"注册",
-                transition: "modal",
+                transition: "modal"
             })
             .when("/", {
                 templateUrl: "content/home.html",
