@@ -1,4 +1,4 @@
-app.controller("goodsDetailCtrl", function($scope,headerChanger,alertBox,$routeParams,AJAX){
+app.controller("goodsDetailCtrl", function($scope,loadingPromp,headerChanger,alertBox,$routeParams,AJAX){
 
 
     var goodsId = $routeParams.goodsId;
@@ -62,7 +62,7 @@ app.controller("goodsDetailCtrl", function($scope,headerChanger,alertBox,$routeP
 
 
         $scope.$on('$destroy',function(e){
-            ajax1.resolve();
+            try{ajax1.resolve();}catch(e){}
         })
 
 

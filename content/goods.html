@@ -1,12 +1,17 @@
 <link rel="stylesheet" href="css/webfont/my-fonts/stylesheet.css"/>
 
+        <style>
+
+        </style>
 <div ng-controller="goodsCtrl" class="content">
 
     <div class="panel-group" id="goodsAccordion">
 
-        <div class="looper panel" data-ng-repeat="product in products">
-            <div class="panel-heading" data-toggle="collapse" data-parent="#goodsAccordion"
-                 data-target="#collapse{{product.id}}">
+        <div class="looper panel panel-default"
+             data-toggle="collapse" data-parent="#goodsAccordion"
+             data-target="#collapse{{product.id}}"
+             data-ng-repeat="product in products">
+            <div class="panel-heading" >
                 <h3 class="panel-title">
                     <a class="accordion-toggle {{product.icon_class}}">
                         {{product.name}}

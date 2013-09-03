@@ -1,31 +1,57 @@
-<style type="text/css">
-    /*ul {margin:0 !important;}*/
-    /*img {border:none;}*/
-    /*ul,li {list-style:none;}*/
-    /*#navWrap {width:100%; height:100%;}*/
-    /*#navWrap .navigator {margin-top:0 !important; display:box; display:-webkit-box;  height:100px;}*/
-    /*#navWrap .navigator li {box-flex:1; -webkit-box-flex:1;}*/
-    /*#navWrap .navigator li div {position:absolute; width:100%; height:80px; }*/
-</style>
+<div data-ng-controller="homeCtrl" class="content" id="homeContent" scrollable>
+    <link rel="stylesheet" href="css/home.css"/>
+    <!-- the menu -->
+    <ul id="hex">
+        <li class="p1">
+            <a nav-to="/companycard">
+                <b></b>
+                <span>企业名片</span>
+                <em></em>
+            </a>
+        </li>
+        <li>
+            <a nav-to="/news">
+                <b></b>
+                <span>新闻资讯</span>
+                <em></em>
+            </a>
+        </li>
+        <li class="p2">
+            <a nav-to="/goods">
+                <b></b>
+                <span>银离子产品</span>
+                <em></em>
+            </a>
+        </li>
+        <li class="p2">
+            <a>
+                <b></b>
+                <span>泰利三加</span>
+                <em></em>
+            </a>
+        </li>
+        <li class="p2">
+            <a nav-to="/knowledge">
+                <b></b>
+                <span>银离子知识</span>
+                <em></em>
+            </a>
+        </li>
+        <li class="p1 p2">
+            <a nav-to="/center">
+                <b></b>
+                <span>个人中心</span>
+                <em></em>
+            </a>
+        </li>
+        <li class="p2">
+            <a nav-to="barList">
+                <b></b>
+                <span>互动专区</span>
+                <em></em>
+            </a>
+        </li>
+    </ul>
 
-<div data-ng-controller="homeCtrl" class="content" scrollable>
-<div id="banner" style="width:100%; height:100px; background-color:#999999;">banner</div>
-
-<div id="navWrap">
-    <div class="list-group">
-        <a nav-to="/companycard" class="list-group-item">企业名片</a>
-        <a nav-to="/summary" class="list-group-item">企业概况</a>
-        <a nav-to="/news" class="list-group-item">新闻资讯</a>
-        <a nav-to="/login" class="list-group-item">个人中心</a>
-        <a nav-to="/goods" class="list-group-item">银离子产品</a>
-
-        <a nav-to="/knowledge" class="list-group-item">银离子知识</a>
-        <a nav-to="/question" class="list-group-item">银离子疑问</a>
-        <a class="list-group-item">互动专区</a>
-
-    </div>
-
-
-</div>
 
 </div>

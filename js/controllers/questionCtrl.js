@@ -1,4 +1,4 @@
-app.controller("questionCtrl",function($scope,AJAX){
+app.controller("questionCtrl",function($scope,loadingPromp,AJAX){
     var ajax1=AJAX({
         url: APP_ACTION["questionURL"],
         cache: true,

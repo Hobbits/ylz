@@ -1,11 +1,18 @@
 .blueText{color:#428bca;}
+.carrotText{color:#E67E22;}
 .blackBack{background-color: #222222}
-.blueBack{background-color: #428bca;}
+.blueBack{background-color: #428bca !important;}
 .blueBack5{
     background-color: rgba(66,139,202,.5);
 }
-.tx-white{
-    color: #ffffff;
+.tx-white{color: #ffffff !important;}
+
+.blur2{
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px); -ms-filter: blur(2px);
+    filter: url(../images/blur.svg#blursvgblur);
 }
 
 .flexbox-center{

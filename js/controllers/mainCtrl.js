@@ -1,4 +1,4 @@
-app.controller("mainCtrl",function($scope,paginationServ){
+app.controller("mainCtrl",function($scope,paginationServ,$navigate){
 
 
 
@@ -18,6 +18,10 @@ app.controller("mainCtrl",function($scope,paginationServ){
             };
             disableAll();
 
+            $scope.pagination.middleBtn=function(){
+                $scope.$broadcast('middleBtn',{});
+
+            };
 
             $scope.pagination.prePage=function(){
                 if(!$scope.pagination.prePagedisable){
@@ -90,4 +94,9 @@ app.controller("mainCtrl",function($scope,paginationServ){
     });
     /*pagination 结束*/
 
+    $scope.$on("$routeChangeError", function(event, current, previous, rejection) {
+        if(rejection == "notlogin") {
+            $navigate.go('/login','modal',false);
+        }
+    })
 })

@@ -1,4 +1,4 @@
-app.controller("headerCtrl",function($scope,$rootScope,$navigate,headerChanger){
+app.controller("headerCtrl",function($scope,$rootScope,$navigate,headerBtnServ){
 
     var headerCollapse=$("#my_headerCollapse");
     $rootScope.$on("$routeChangeStart",function(){
@@ -10,11 +10,13 @@ app.controller("headerCtrl",function($scope,$rootScope,$navigate,headerChanger){
     });
 
 
+    var curPageRole=null;
     $scope.$on("$pageNaved",function(angularEvent,navHistory,curRoute,preRoute){
+
         if(!curRoute.$$route){
             return
         }
-        var curPageRole=null;
+
         curPageRole=curRoute.$$route['pageRole'];
 
 
@@ -25,7 +27,11 @@ app.controller("headerCtrl",function($scope,$rootScope,$navigate,headerChanger){
         var l=navHistory.length;
         var pre=navHistory[l-2];
         if(pre){
-            $scope.tt.bTitle=pre[1].$$route['pageTitle'];
+            if(curPageRole=="login"){
+                $scope.tt.bTitle="首页";
+            }else{
+                $scope.tt.bTitle=pre[1].$$route['pageTitle'];
+            }
         }else{
             $scope.tt.bTitle=null;
         }
@@ -50,10 +56,28 @@ app.controller("headerCtrl",function($scope,$rootScope,$navigate,headerChanger){
             $scope.tt.bTitle= o.backTitle;
         }
 
-    })
+    });
+
+    $scope.$on("$changeHeaderCusBtn",function(angularEvt,html){
+        /*修改头部右边按钮*/
+        if(html){
+            $scope.customHeaderBtn=html;
+        }else{
+            $scope.customHeaderBtn=null;
+        }
+    });
+
+    $scope.customBtnClicked=function($event){
+        headerBtnServ.clicked($event);
+    }
 
     $scope.historyBack=function(){
-        $navigate.back();
+        if(curPageRole=="login"){
+            $navigate.go('/');
+        }else{
+            $navigate.back(true);
+        }
+
     }
 
 

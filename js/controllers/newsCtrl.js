@@ -1,6 +1,6 @@
-app.controller("newsCtrl",function($scope,AJAX,paginationServ,$sessionStorage){
+app.controller("newsCtrl",function($scope,AJAX,paginationServ,loadingPromp,$sessionStorage){
     $scope.news = {};
-    var paginal=7/*每页多少条*/
+    var paginal=7;/*每页多少条*/
 
     var ajaxquery=[];
 
@@ -22,8 +22,8 @@ app.controller("newsCtrl",function($scope,AJAX,paginationServ,$sessionStorage){
             sCall: function (d) {
                 if(d.status == "ok" && d.result.length > 0) {
                     $scope.newsList = d.result;
-                    if(d.remark>=1){
-                       var totalpage=Math.ceil(d.remark/paginal);
+                    if(('totalItem' in d.remark) && d.remark['totalItem'] >=1){
+                       var totalpage=Math.ceil(d.remark['totalItem']/paginal);
                         paginationServ.setter($scope,pageNum,totalpage);
                     }
                 }else{

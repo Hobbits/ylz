@@ -7,6 +7,7 @@
     <title>银离子课堂</title>
 
     <link rel="stylesheet" href="libs/bootStrap/css/bootstrap.css">
+    <!--<link rel="stylesheet" href="libs/bootStrap/css/bootstrap-theme.css">-->
 
     <script src="libs/jquery.js"></script>
     <script src="libs/angular.1.1.5.js"></script>
@@ -21,6 +22,7 @@
 
     <script src="libs/mobile-nav.min.js"></script>
 
+    <script src="js/serverurl.js"></script>
     <script src="js/config.js"></script>
 
 
@@ -47,13 +49,19 @@
             <a><span class="glyphicon glyphicon-chevron-left"></span>{{tt.bTitle}}</a>
         </p>
 
-        <button type="button" class="navbar-toggle my_navcollapseBtn" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <button ng-if="!customHeaderBtn" type="button" class="navbar-toggle my_navcollapseBtn" data-toggle="collapse" data-target=".navbar-ex1-collapse">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a nav-to="/" class="navTitle">{{tt.pTitle}}</a>
+
+        <p ng-if="customHeaderBtn" hm-tap="customBtnClicked($event)"
+           ng-bind-html="customHeaderBtn" id="customHeaderBtn"
+           class="navbar-text pull-right">
+        </p>
+
+        <a class="navTitle">{{tt.pTitle}}</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -63,10 +71,16 @@
                 <a nav-to="/">首页</a>
             </li>
             <li ng-class="navActiveClass[1]">
-                <a nav-to="/info">企业简介</a>
+                <a nav-to="/summary">企业概况</a>
             </li>
             <li ng-class="navActiveClass[2]">
                 <a nav-to="/goods">银离子产品</a>
+            </li>
+            <li ng-class="navActiveClass[3]">
+                <a nav-to="/news">新闻资讯</a>
+            </li>
+            <li ng-class="navActiveClass[4]">
+                <a nav-to="/news">互动专区</a>
             </li>
         </ul>
 
@@ -86,8 +100,9 @@
              id="prePage" class="pageinationBtn col-xs-4 flexbox-center {{pagination.prePagedisable}}">
             <span class="glyphicon glyphicon-circle-arrow-left"></span>
         </div>
-        <div id="pageNow" class="pageinationBtn col-xs-4 flexbox-center">
-            <span ng-bind="pagination.text"></span>
+        <div id="pageNow" hm-tap="pagination.middleBtn()" touchact="skewTop"
+             ng-bind-html="pagination.text" class="pageinationBtn col-xs-4 flexbox-center">
+
         </div>
         <div hm-tap="pagination.nextPage()" touchact="skewTop"
                 id="pageNext" class="pageinationBtn col-xs-4 flexbox-center {{pagination.nextPagedisable}}">
@@ -121,6 +136,8 @@
 
 <script src="js/controllers/mainCtrl.js"></script>
 
+<script src="js/filter.js"></script>
+
 <script defer src="js/controllers/goodsCtrl.js"></script>
 <script defer src="js/controllers/goodslistCtrl.js"></script>
 <script defer src="js/controllers/goodsDetailCtrl.js"></script>
@@ -134,12 +151,20 @@
 <script defer src="js/controllers/questionCtrl.js"></script>
 <script defer src="js/controllers/loginCtrl.js"></script>
 <script defer src="js/controllers/registerCtrl.js"></script>
-
-
+<script defer src="js/controllers/centerCtrl.js"></script>
+<script defer src="js/controllers/bar/barlistCtrl.js"></script>
+<script defer src="js/controllers/bar/postlistCtrl.js"></script>
+<script defer src="js/controllers/bar/addnewpost.js"></script>
+<script defer src="js/controllers/bar/postviewCtrl.js"></script>
+<script defer src="js/controllers/bar/toggleReply.js"></script>
+<script defer src="js/controllers/bar/addnewcomm.js"></script>
+<script defer src="js/controllers/bar/replyPostsCtrl.js"></script>
 
 <script defer src="libs/bootStrap/js/bootstrap.min.js"></script>
+
+<script src="js/other/other.js"></script>
 <script type="text/javascript" src="phonegap.js"></script>
-<script src="js/other.js"></script>
+
 
 <!--<script src="js/other/myswipe.js"></script>-->
 

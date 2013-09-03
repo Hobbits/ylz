@@ -1,5 +1,32 @@
 app.config(function($routeProvider) {
         $routeProvider
+            .when("/addnewcomment:tid", {
+                templateUrl: "content/bar/addnewpost.html",
+                pageTitle:"写回复",
+                controller:'addnewcommCtrl',
+                transition: "modal",
+                resolve: validateLogin
+            })
+            .when("/addnewpost:fid", {
+                templateUrl: "content/bar/addnewpost.html",
+                pageTitle:"写帖子",
+                controller:'addnewpostCtrl',
+                transition: "modal",
+                resolve: validateLogin
+            })
+            .when("/postview/:postid", {
+                templateUrl: "content/bar/postview.html",
+                pageTitle:"看帖子"
+            })
+            .when("/postsList/:fid", {
+                templateUrl: "content/bar/postlist.html",
+                pageTitle:"帖子列表"
+            })
+            .when("/barList", {
+                templateUrl: "content/bar/barlist.html",
+                pageRole:"nav4",
+                pageTitle:"板块分类"
+            })
             .when("/goods", {
                 templateUrl: "content/goods.html",
                 pageRole:"nav2",
@@ -21,7 +48,6 @@ app.config(function($routeProvider) {
             })
             .when("/info", {
                 templateUrl: "content/info.html",
-                pageRole:"nav1",
                 pageTitle:"企业简介",
                 transition: "slide"
             })
@@ -32,8 +58,8 @@ app.config(function($routeProvider) {
             })
             .when("/newsDetail/:newsId", {
                 templateUrl: "content/newsDetail.html",
-                pageTitle:"",
                 transition: "slide",
+                pageRole:"nav3",
                 pageTitle:"新闻内容"
             })
             .when("/knowledge", {
@@ -45,6 +71,7 @@ app.config(function($routeProvider) {
             .when("/summary", {
                 templateUrl: "content/summary.html",
                 pageTitle:"企业概况",
+                pageRole:"nav1",
                 transition: "slide",
                 reverse: false
             })
@@ -54,26 +81,56 @@ app.config(function($routeProvider) {
                 transition: "slide",
                 reverse: false
             })
-            .when("/login", {
+            .when("/login:code", {
                 templateUrl: "content/login.html",
                 pageTitle:"登录",
-                transition: "slide",
-                reverse: false
+                transition: "modal",
+                pageRole:"login"
             })
             .when("/register", {
                 templateUrl: "content/register.html",
                 pageTitle:"注册",
-                transition: "modal",
+                transition: "modal"
+            })
+            .when("/center", {
+                templateUrl: "content/center.html",
+                pageTitle:"个人中心",
+                transition: "slide",
+                resolve: validateLogin
+            })
+            .when("/replyPosts/:postId", {
+                templateUrl: "content/bar/replyPosts.html",
+                pageTitle:"我发过的贴",
+                transition: "slide",
+                controller:'replyPostsCtrl',
+                resolve: validateLogin
+            })
+            .when("/sendPosts/:postId", {
+                templateUrl: "content/bar/sendPosts.html",
+                pageTitle:"我回复的贴",
+                transition: "slide",
+                controller:'replyPostsCtrl',
+                resolve: validateLogin
             })
             .when("/", {
                 templateUrl: "content/home.html",
                 pageRole:"nav0",
                 pageRole:"main",
                 pageTitle:"首页"
-
             })
             .otherwise({
                 redirectTo: "/"
             });
     })
 
+var validateLogin = {
+    storge: function($q,$localStorage) {
+        var deferred = $q.defer();
+        if($localStorage.userInfo){
+            deferred.resolve();
+        }else{
+            deferred.reject("notlogin");
+        };
+        return deferred.promise;
+    }
+};

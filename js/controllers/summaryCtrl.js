@@ -1,4 +1,4 @@
-app.controller("summaryCtrl",function($scope,AJAX){
+app.controller("summaryCtrl",function($scope,loadingPromp,AJAX){
 
 //    var naved=false;
 //    $scope.$on('$pageNaved',function(){
@@ -18,8 +18,11 @@ app.controller("summaryCtrl",function($scope,AJAX){
 
     $scope.summary={}
 
+    var ajaxlast={};
     var getAct=function(index,cb){
-        AJAX({
+
+        try{ajaxlast.resolve()}catch(e){}
+        ajaxlast=AJAX({
             url: APP_ACTION["summaryURL"]+index,
             cache:true,
             bCall: function () {
@@ -66,8 +69,10 @@ app.controller("summaryCtrl",function($scope,AJAX){
         }else{
             changepage(index);
         }
-
-
-
      }
+
+    $scope.$on('$destroy',function(e){
+        try{ajaxlast.resolve()}catch(e){}
+    })
+
 })

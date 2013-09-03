@@ -1,4 +1,4 @@
-<div ng-controller="newsCtrl" class="content" scrollable>
+<div ng-controller="newsCtrl" class="content hasPagination" scrollable>
     <link rel="stylesheet" href="css/nganimate.css">
     <link rel="stylesheet" href="css/news.css">
     <link rel="stylesheet" href="css/adsorbNav.css">
@@ -11,17 +11,18 @@
         </li>
     </ul>
     <!--吸附式二级菜单修复 -->
-    <div id="lv2navfix" class="pureBlock"></div>
-    <script>
-        (function(){
-            var tabH=$('.adsorbNav').height();
-            var fixer=$('#lv2navfix');
-            fixer.height(tabH);
-        })()
-    </script>
+    <!--<div id="lv2navfix" class="pureBlock"></div>-->
+    <!--<script>-->
+        <!--(function(){-->
+            <!--var tabH=$('.adsorbNav').height();-->
+            <!--var fixer=$('#lv2navfix');-->
+            <!--fixer.height(tabH);-->
+        <!--})()-->
+    <!--</script>-->
 
-    <div id='newsAlert' class="pureBlock"></div>
-    <div id="newsTabContent" class="tab-content" ng-animate="animateType" ng-switch on="news.newscatIndex">
+
+    <div id="newsTabContent" class="tab-content adsorbNav-tabContentbox" ng-animate="animateType" ng-switch on="news.newscatIndex">
+        <div id='newsAlert' class="pureBlock"></div>
         <div class="tabc" ng-switch-when="1">
             <p>
                 <ul class="list-group">
@@ -29,7 +30,7 @@
                 </ul>
             </p>
 
-            <div class="alert" ng-if="noNews1">没有行业动态！</div>
+            <div class="alert alert-warning" ng-if="noNews1">没有行业动态！</div>
         </div>
 
         <div class="tabc" ng-switch-when="2">
@@ -40,7 +41,7 @@
                 
             </p>
             
-            <div class="alert" ng-if="noNews2">没有公司新闻！</div>
+            <div class="alert alert-warning" ng-if="noNews2">没有公司新闻！</div>
         </div>
 
     </div>

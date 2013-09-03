@@ -1,4 +1,4 @@
-<style xmlns="http://www.w3.org/1999/html">
+<style>
 .noShow { visibility: hidden; width: 0; height: 0; }
 #regForm label {font-weight:normal !important; width:27%; text-align:right;}
 #regForm .input-control {width:70%; display:inline-block;}
@@ -30,15 +30,15 @@
         <div class="form-group">
             <label for="upload_avatar">上传头像：</label>
             <a ng-click="pickImg()">
-                <img src="images/add_photo.png" id="head_portrait" style="max-width:5em; max-height:5em;"/>
+                <img src="images/add_photo.png" id="head_portrait" style="width:4em; height:4em;"/>
             </a>
-            <i id="imgSize" style="color: #737373; margin-left:1em;"></i>
+            <p class="help-block" style="display:inline-block; margin-left:1em;">图像建议为正方形</p>
+            <!--<i id="imgSize" style="color: #737373; margin-left:1em;"></i>-->
             <!--<input type="hidden" name="MAX_FILE_SIZE" value="" />-->
             <input type="file" data-file id="upload_avatar" name="upload_avatar" class="noShow" accept="image/*">
-
         </div>
-        <div class="form-group" style="text-align: center;">
-            <button type="submit" id="submitBtn" class="btn btn-primary" style="width:80%;">提交</button>
+        <div class="form-group" style="text-align:center;">
+            <button type="submit" ng-init="subBtn={isOff:false,submitText:'提交'}"  id="submitBtn" class="btn btn-primary btn-block">{{subBtn.submitText}}</button>
         </div>
     </form>
     <div id='regAlert' class="pureBlock"></div>

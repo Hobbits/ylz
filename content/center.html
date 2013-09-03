@@ -1,0 +1,23 @@
+<div ng-controller="centerCtrl" class="content" scrollable>
+    <link rel="stylesheet" href="css/center.css"/>
+    <div class="jumbotron" id="userInfo">
+        <div class="container">
+            <img ng-src="{{imgdir+user.userhead}}" class="img-thumbnail">
+            <h4>{{user.username}}</h4>
+        </div>
+    </div>
+
+    <table class="table table-bordered" id="postInfo">
+        <tr>
+            <td nav-to="/replyPosts/1">
+                <img src="images/1.png" />
+                <div>我发过的贴({{posts.postcount}})</div>
+            </td>
+            <td nav-to="/sendPosts/2">
+                <img src="images/2.png" />
+                <div>我回复的贴({{posts.commentcount}})</div>
+            </td>
+        </tr>
+    </table>
+    <button hm-tap="logout()" id="logout" type="button" class="btn btn-default btn-block">退出</button>
+</div>

@@ -1,4 +1,4 @@
-app.controller("knowledgeCtrl",function($scope,AJAX){
+app.controller("knowledgeCtrl",function($scope,loadingPromp,AJAX){
     $scope.knowledge={};
     var getAct=function(index){
         AJAX({

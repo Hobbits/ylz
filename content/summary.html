@@ -2,33 +2,24 @@
     <link rel="stylesheet" href="css/nganimate.css">
     <link rel="stylesheet" href="css/summary.css">
     <link rel="stylesheet" href="css/adsorbNav.css">
+    <ul id="myTab" class="nav nav-tabs adsorbNav">
+        <li class="active">
+            <a data-toggle="tab" hm-tap="getContent(1)">企业文化</a>
+        </li>
+        <li>
+            <a data-toggle="tab" hm-tap="getContent(2)">企业优势</a>
+        </li>
+        <li>
+            <a data-toggle="tab" hm-tap="getContent(3)">企业荣誉</a>
+        </li>
+        <li>
+            <a data-toggle="tab" hm-tap="getContent(4)">发展历程</a>
+        </li>
+    </ul>
+<section id="tabbigWrap" class="pureBlock adsorbNav-tabContentbox">
 
- <section id="tabbigWrap" class="pureBlock">
-<ul id="myTab" class="nav nav-tabs adsorbNav">
-    <li class="active">
-        <a data-toggle="tab" hm-tap="getContent(1)">企业文化</a>
-    </li>
-    <li>
-        <a data-toggle="tab" hm-tap="getContent(2)">企业优势</a>
-    </li>
-    <li>
-        <a data-toggle="tab" hm-tap="getContent(3)">企业荣誉</a>
-    </li>
-    <li>
-        <a data-toggle="tab" hm-tap="getContent(4)">发展历程</a>
-    </li>
-</ul>
 
-     <!--吸附式二级菜单修复 -->
-     <div id="lv2navfix" class="pureBlock"></div>
-     <script>
-         (function(){
-             setTimeout(function(){
-                 var tabH=$('#myTab>li').height();
-                 var fixer=$('#lv2navfix');
-                 fixer.height(tabH);},1);
-         })()
-     </script>
+
 
 
 <div class="tab-content" id="tabcWrap" ng-animate="animateType" ng-switch on="summary.summaryIndex">

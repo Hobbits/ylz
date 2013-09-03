@@ -22,6 +22,7 @@ app.factory('alertBox', function(){
                     newdom.className+='alert-dismissable ';
                     newdom.innerHTML='<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
                 }
+                o.type= o.type || 'warning';
                 if(o.type){
                     newdom.className+='alert-'+ o.type+' ';
                 }
@@ -98,7 +99,7 @@ app.factory('paginationServ', function(){
         getCurPage:function(){
             return curPage;
         },
-        setter:function(scope,pNum,tNum){
+        setter:function(scope,pNum,tNum,customText){
             var self=this;
             var setting=function(){
                 var cpage=self.getCurPage();
@@ -106,7 +107,7 @@ app.factory('paginationServ', function(){
                 if(cpage>=1 && cpage<=tNum){
                     /*举例：翻页完成后启用上一页，禁用下一页，修改里面的字为2/5*/
                     self.fliped(scope,{
-                        changeText:cpage+"/"+tNum,
+                        changeText:customText || cpage+"/"+tNum,
                         curPage: cpage
                     });
                 }
@@ -130,3 +131,73 @@ app.factory('paginationServ', function(){
         }
     };
 });
+
+app.factory('headerBtnServ', function($rootScope){
+    return {
+        set:function(html){
+            $rootScope.$broadcast('$changeHeaderCusBtn',html);
+        },
+        clicked:function(evt){
+            $rootScope.$broadcast('$HeaderBtnClicked',evt);
+        }
+    }
+})
+
+
+
+app.factory('AJAX', function($http,$q,$navigate,$localStorage){
+    /*url p bCall sCall eCall*/
+    var send=function(o){
+
+        var canceler = $q.defer();
+
+        var sendmethod=o.method || "GET";
+        if(typeof(o.bCall)=="function"){o.bCall();}
+
+        var httpPatams={
+            cache: o.cache||false
+        };
+        httpPatams.url= o.url;
+        httpPatams.method =sendmethod;
+        if(sendmethod=="GET"){
+            httpPatams.params=o.p || {};
+        }else{
+            httpPatams.data=o.p || null;
+        };
+
+        /*设定超时*/
+        httpPatams.timeout= o.timeout || canceler.promise || 15000;
+
+        $http(httpPatams).success(function(data, status, headers, config){
+            if(typeof(o.sCall)=="function"){
+                o.sCall(data,status, headers, config);
+            };
+            if(typeof(o.cCall)=="function"){
+                o.cCall(data,status, headers, config);
+            };
+        }).error(function(data,status, headers, config){
+                if(typeof(o.eCall)=="function"){
+                    o.eCall(data,status, headers, config);
+                };
+                if(typeof(o.cCall)=="function"){
+                    o.cCall(data,status, headers, config);
+                };
+                if (status == 401) {
+                    try{
+                        delete $localStorage.userInfo;
+                    }catch(e){};
+                    $navigate.go('/login'+status,null,true);
+                }
+            });
+
+        return canceler;
+    };
+    return send;
+});
+
+app.factory('goHome', function($location,$navigate){
+    return function(){
+        $location.path('/').replace();
+        $navigate.go('/');
+    }
+})

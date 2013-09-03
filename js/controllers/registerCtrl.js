@@ -1,11 +1,14 @@
-app.controller("registerCtrl",function($scope,$q,$http,$location,$timeout,alertBox){
-    var regForm,formdata,regAlert;
+app.controller("registerCtrl",function($scope,$http,loadingPromp,$timeout,alertBox,$navigate){
+    var regForm,formdata,regAlert,ajax1;
+    var changeBtn=function(text,bol){
+        $scope.subBtn={isOff:bol,submitText:text};
+    };
     $scope.regSubmit = function() {
         regForm = document.getElementById("regForm");
         formdata = new FormData(regForm);
-        console.log(formdata);
-
-        $http.post(APP_ACTION["registerURL"], formdata, {
+        loadingPromp.open("正在注册...");
+        changeBtn("注册中",true);
+        ajax1 = $http.post(APP_ACTION["registerURL"], formdata, {
             headers: { 'Content-Type': false },
             transformRequest: function(data) { return data; }
         }).success(function(d, status, headers, config){
@@ -21,8 +24,9 @@ app.controller("registerCtrl",function($scope,$q,$http,$location,$timeout,alertB
                             "dismissable":false
                         });
                     }
+
                     $timeout(function(){
-                        $location.path("/login");
+                        $navigate.go('/login',null,true);
                     },1000);
                 } else if(d.status == "no"){
                     if(regAlert){
@@ -36,8 +40,21 @@ app.controller("registerCtrl",function($scope,$q,$http,$location,$timeout,alertB
                         });
                     }
                 }
+                loadingPromp.close();
+                changeBtn("注册",true);
             }).error(function(data, status, headers, config) {
-
+                if(regAlert){
+                    regAlert.change(d.result, "danger");
+                } else {
+                    regAlert = alertBox.show({
+                        'where':document.getElementById('regAlert'),
+                        'html': "注册失败",
+                        'type':"danger",
+                        "dismissable":false
+                    });
+                }
+                loadingPromp.close();
+                changeBtn("注册",true);
             });
     }
 
@@ -45,19 +62,23 @@ app.controller("registerCtrl",function($scope,$q,$http,$location,$timeout,alertB
         $("#upload_avatar").click();
     }
 
+    $scope.$on('$destroy',function(e){
+        try{ajax1.resolve();}catch(e){}
+
+    })
+
 })
 
 
 app.directive("file", function() {
-    var files,f;
+    var f;
     return {
         scope: {
             file: '='
         },
         link: function(scope, element, attrs) {
             element.bind('change', function(event) {
-                files = event.target.files;
-                f = files[0];
+                f = event.target.files[0];
                 if(!f.type.match('image.*')){
                     return null;
                 }
@@ -65,7 +86,7 @@ app.directive("file", function() {
                 reader.onload = function(e){
                     var DataURIScheme = this.result;
                     $("#head_portrait").attr("src", DataURIScheme);
-                    $("#imgSize").text(Math.ceil(f.size/1000) + "KB");
+//                    $("#imgSize").text(Math.ceil(f.size/1000) + "KB");
                 }
                 reader.readAsDataURL(f);
 //                scope.$apply();

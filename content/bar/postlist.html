@@ -1,0 +1,91 @@
+<link rel="stylesheet" href="css/webfont/fontello/css/fontello.css"/>
+<style>
+    #pageNow span{
+      font-size:inherit;
+    }
+    #forumbgBlock{
+        margin-top: -0.8em;
+        margin-right: -0.8em;
+        margin-left: -0.8em;
+        height: 15em;
+        background-position: 50% 0;
+        background-size: cover;
+        background-repeat: repeat-x;
+        margin-bottom: -7em;
+    }
+
+    .userheadimg{
+        width: 1em;height: 1em;
+        margin-right: 0.8em;
+    }
+    .lefttext{
+        text-align: left;float: left;margin-right: 2.3em;
+    }
+    .listtext{
+        text-align: right;
+    }
+    .none{
+        width: 0 !important;height: 0 !important;
+        background:none;
+        position: absolute;
+    }
+
+</style>
+<div id="postlistContent"
+     data-ng-controller="postlistCtrl" class="content hasPagination">
+    <div id="forumbgBlock" class="pureBlock"
+         ng-class="{true:'', false:'none'}[postlist.length>5]"
+         ng-style="forumbgStyle">
+
+    </div>
+
+    <div id="postlist" class="list-group">
+        <a nav-to="/postview/{{post.pid}}" class="list-group-item" ng-repeat="post in postlist">
+            <h4 class="list-group-item-heading">
+                <img class="userheadimg media-object pull-left" src="{{imgURL+post.userhead}}" />
+                {{post.subject | truncate:60}}
+            </h4>
+            <p class="lefttext">
+                <span class="icon-chat" ng-class="{true:'carrotText', false:''}[post.personnum>10]"></span>
+                {{post.comment_num}}</p>
+            <p class="listtext list-group-item-text">{{post.create_time}}</p>
+        </a>
+    </div>
+</div>
+
+
+<script>
+    (function(window,$){
+        var boxObj=$("#forumbgBlock");
+        var boxstartHeight=boxObj.height(); /*开始高度*/
+        var boxbgStartY=0;
+        var boxstartOpacity=1;
+        var CONV=boxstartHeight/15 || 14;
+        var boxbgEndY=-CONV*5;/*结束高度*/
+        var boxendOpacity=0;
+        var maxScroll=CONV*8;
+
+        $("#postlistContent").on('scroll',function(e){
+            var scrollTop=this.scrollTop;
+
+            if(scrollTop<maxScroll){
+                var percent=scrollTop/maxScroll;
+
+                var getNowValue=function(startv,endv,percent){
+                    return startv-((startv-endv)*percent);
+                }
+
+                var boxbgnowY=getNowValue(boxbgStartY,boxbgEndY,percent);
+                var boxnowOpacity=getNowValue(boxstartOpacity,boxendOpacity,percent);
+                boxObj.css({
+                    'backgroundPosition':'50% '+boxbgnowY+'px',
+                    'opacity':boxnowOpacity
+                })
+
+            }
+
+        });
+
+    })(window,$)
+
+</script>

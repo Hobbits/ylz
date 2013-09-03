@@ -1,20 +1,6 @@
-//var SERVER = 'http://192.168.1.116/ylz/code/index.php'; //朱
-//var SERVER_ROOT = 'http://192.168.1.116/ylz/code/';
-
-
-//var SERVER = 'http://192.168.1.111/ylz/code/index.php'; //钮
-//var SERVER_ROOT = 'http://192.168.1.111/ylz/code/';
-
-var SERVER = 'http://yunku.4pu.com/yzd/code/index.php'; //服务器
-var SERVER_ROOT = 'http://yunku.4pu.com/yzd/code/';
-
-// var SERVER = 'http://192.168.1.2/yzd/code/index.php'; //服务器
-
-
-
 var APP_ACTION = {
-    imgdir:SERVER_ROOT+'uploads/',
-    goodsURL : SERVER + '/Product_category/get_all', 
+    imgdir:IMG_SERVER_ROOT+'uploads/',
+    goodsURL : SERVER + '/Product_category/get_all',
     goodslistURL : SERVER + '/Product/get_by_category/', /*商品列表*/
     goodsDetailURL : SERVER + '/Product/get_detail/',   /*商品详情*/
     infoURL : SERVER + '/Company/getcompany',  /*企业信息*/
@@ -22,9 +8,17 @@ var APP_ACTION = {
     newsURL: SERVER + '/Article/', /*新闻资讯*/
     newsDetailURl: SERVER + '/Article/get_articlecontent/',  /*新闻详情*/
     knowledgeURL: SERVER + '/Article/get_ylz_knowledge/', /*银离子知识*/
-    questionURL: SERVER + '/Faq/get_questions', /*银离子疑问*/ 
+    questionURL: SERVER + '/Faq/get_questions', /*银离子疑问*/
     registerURL: SERVER + '/User/register',  /*注册*/
-    loginURL: SERVER + '/User/login' /*登录*/
-
-
+    loginURL: SERVER + '/User/login', /*登录*/
+    logoutURL: SERVER + '/User/logout', /*退出*/
+    centerURL: SERVER + '/User/get_info', /*获取用户信息*/
+    forumURL:SERVER + '/Community/getforum', /*互动版块列表*/
+    newpostURL:SERVER+'/Community/edit_post',/*发表新帖*/
+    getpostsURL:SERVER+'/Community/get_post/', /*帖子列表*/
+    postviewURL:SERVER+'/Community/get_post_content/',/*帖子内容*/
+    addcommentURL:SERVER+'/Community/add_comment/',/*发表回帖*/
+    getcommentURL:SERVER+'/Community/get_comments/',/*回帖列表*/
+    postsURL: SERVER + '/Community/' /*发过的帖子和回复的帖子*/
 }
+

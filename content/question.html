@@ -24,15 +24,18 @@
 
 </div>
 <script type="text/javascript">
-    var ddShow,dd;
-    $("#questionList").on("click", "dt", function(){
-        ddShow = $("#questionList dd:visible");
-        dd = $(this).next();
-        if(typeof(ddShow) != 'undefined'){
-            ddShow.slideUp();
-        }
-        if(!dd.is(":animated")){
-            dd.slideToggle();
-        }
-    })
+    (function(){
+        var ddShow,dd;
+        $("#questionList").on("click", "dt", function(){
+            ddShow = $("#questionList dd:visible");
+            dd = $(this).next();
+            if(typeof(ddShow) != 'undefined'){
+                ddShow.slideUp();
+            }
+            if(!dd.is(":animated")){
+                dd.slideToggle();
+            }
+        });
+    })()
+
 </script>

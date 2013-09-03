@@ -1,6 +1,6 @@
-app.controller("infoCtrl",function($scope,AJAX,alertBox){
+app.controller("infoCtrl",function($scope,AJAX,alertBox,loadingPromp){
     $scope.imgdir = APP_ACTION.imgdir;
-    AJAX({
+    var ajax1=AJAX({
         url: APP_ACTION["infoURL"],
         bCall: function () {
             loadingPromp.open("正在获取企业信息...");
@@ -10,7 +10,6 @@ app.controller("infoCtrl",function($scope,AJAX,alertBox){
 
                 $scope.companyInfo = d.result;
             }
-            console.log(d);
 
         },
         cCall: function () {
@@ -23,6 +22,10 @@ app.controller("infoCtrl",function($scope,AJAX,alertBox){
                 'type':'danger'
             });
         }
+    });
+
+    $scope.$on('$destroy',function(e){
+        try{ajax1.resolve()}catch(e){}
     })
 
 })

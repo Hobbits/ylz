@@ -21,3 +21,7 @@
     text-shadow: 0 0 1em #428bca;
     font-size: 2rem;
 }
+
+.hasPagination{
+    padding-bottom: 3.5rem;
+}

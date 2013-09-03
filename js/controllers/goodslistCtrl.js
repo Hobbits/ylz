@@ -1,4 +1,4 @@
-app.controller("goodslistCtrl", function($scope,$routeParams,AJAX,alertBox,headerChanger){
+app.controller("goodslistCtrl", function($scope,$routeParams,loadingPromp,AJAX,alertBox,headerChanger){
 
     var goodslistId = $routeParams.goodslistId;
     $scope.imgdir = APP_ACTION.imgdir;

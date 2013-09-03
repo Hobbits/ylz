@@ -1,4 +1,3 @@
-#tabcWrap{position: relative;}
 @media (max-width: 768px) {
     #myTab{
         width: 100%;
@@ -17,4 +16,8 @@
 .tabc img{max-width: 100% !important;}
 @media (min-width: 768px) {
     #tabbigWrap{width: 70%;margin: 0 auto;font-size: 1.25em;}
+    #myTab {
+        width: 70%;
+        margin: 0 auto;
+    }
 }
