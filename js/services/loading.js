@@ -51,7 +51,7 @@ app.factory('loadingPromp', function() {
             var self=this;
             self.target.style.display='none';
             if(delay!==0){
-                self.timmer.delay=delay||350;
+                self.timmer.delay=delay||500;
             }else{
                 self.timmer.delay=0;
             }
