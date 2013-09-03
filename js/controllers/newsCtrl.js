@@ -44,6 +44,7 @@ app.controller("newsCtrl",function($scope,AJAX,paginationServ,loadingPromp,$sess
     var naved=false;
     $scope.$on('$pageNaved',function(){
         if(naved){return}
+        naved = true;
         var catIndex= 1;
         var pageNum=1;
         if(angular.isDefined($sessionStorage.newsListViewCache)){

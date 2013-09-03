@@ -21,11 +21,11 @@ app.controller("replyPostsCtrl",function($scope,AJAX,paginationServ,loadingPromp
             sCall: function (d) {
                 console.log(d);
                 if(d.status == "ok" && d.result.length > 0) {
-                        $scope.postlist= d.result;
-                        if(('remark' in d) && d.remark.totalItem>=1 ){
-                            var totalpage=Math.ceil(d.remark.totalItem/paginal);
-                            paginationServ.setter($scope,pageNum,totalpage);
-                        }
+                    $scope.postlist= d.result;
+                    if(('remark' in d) && d.remark.totalItem>=1 ){
+                        var totalpage=Math.ceil(d.remark.totalItem/paginal);
+                        paginationServ.setter($scope,pageNum,totalpage);
+                    }
                 }else{
                     $scope["noPosts" + postId]  = true;
                 }
@@ -35,21 +35,58 @@ app.controller("replyPostsCtrl",function($scope,AJAX,paginationServ,loadingPromp
             },
             eCall:function(){}
         });
-        $sessionStorage.newsListViewCache={pageNum:pageNum};
+        if(postId == 1){
+            $sessionStorage.sendPostsCache={pageNum:pageNum};
+        } else if(postId == 2) {
+            $sessionStorage.replyPostsCache={pageNum:pageNum};
+        }
         ajaxquery.push(newajax);
-
     }
 
-    
+    var getPostsCache = function(cache){
+        if(angular.isDefined($sessionStorage[cache])){
+            return $sessionStorage[cache]['pageNum'];
+        } else {
+            return null;
+        }
+    }
     var naved=false;
     $scope.$on('$pageNaved',function(){
         if(naved){return}
-        var pageNum=1;
-        if(angular.isDefined($sessionStorage.newsListViewCache)){
-            pageNum=$sessionStorage.newsListViewCache['pageNum'] || 1;
+        var pageNum;
+        if(postId == 1){
+            pageNum = getPostsCache("sendPostsCache") || 1;
+        } else if(postId == 2) {
+            pageNum = getPostsCache("replyPostsCache") || 1;
         }
         getAct(pageNum);
+        naved = true;
     });
+
+
+
+    $scope.$on('pagination',function(evt,o){
+        /*被点击上一页或下一页事件*/
+        if(o && o.where && o.curpageNum){
+            var newPageNum= o.curpageNum;
+            if(o.where=="next"){
+                newPageNum++;
+            }else if(o.where=="pre"){
+                newPageNum--;
+            }
+            getAct(newPageNum);
+        }
+    });
+
+
+    $scope.$on('$destroy',function(){
+        paginationServ.toogle($scope,false);
+        /*取消全部ajax*/
+        angular.forEach(ajaxquery, function(ajaxobj){
+            try{ajaxobj.resolve();}catch(e){}
+        });
+    })
+
 
 
 
