@@ -7,10 +7,8 @@ app.controller("infoCtrl",function($scope,AJAX,alertBox,loadingPromp){
         },
         sCall: function (d) {
             if(d.status == "ok") {
-
                 $scope.companyInfo = d.result;
             }
-
         },
         cCall: function () {
             loadingPromp.close();
