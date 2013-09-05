@@ -11,11 +11,11 @@
         <tr>
             <td nav-to="/replyPosts/1">
                 <img src="images/1.png" />
-                <div>我发过的贴({{posts.postcount}})</div>
+                <div>我发过的贴<span data-ng-show="posts.postcount>0">{{"("+posts.postcount+")"}}</span></div>
             </td>
             <td nav-to="/sendPosts/2">
                 <img src="images/2.png" />
-                <div>我回复的贴({{posts.commentcount}})</div>
+                <div>我回复的贴<span data-ng-show="posts.commentcount>0">{{"("+posts.commentcount+")"}}</span></div>
             </td>
         </tr>
     </table>

@@ -3,7 +3,7 @@ var app=angular.module('myApp', ['ngSanitize','regou.ajaxNormalizer','ajoslin.mo
 
 
 app.config(function($httpProvider,$compileProvider) {
-    $compileProvider.urlSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel|sms):/);
+    $compileProvider.urlSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel|sms|mqq|weixin):/);
 
 });
 
@@ -18,7 +18,7 @@ app.directive("navTo",['$navigate', function($navigate){
     return {
         restrict: 'A',
         link: function (scope,element,attrs) {
-            Hammer(element[0]).on("tap",function(){
+            window.Hammer(element[0]).on("tap",function(){
                 var path=attrs['navTo'];
                 var animate=attrs.ani;
                 if(path=='back'){
@@ -52,5 +52,21 @@ app.directive("touchact",function(){
     }
 });
 
+app.directive("togglereplybtn",function(){
+    return {
+        restrict: 'A',
+        controller: function ($scope) {
+            $scope.toggleing = false;
+            $scope.toggleAct= function() {
+                $scope.toggleing = !$scope.toggleing;
+            };
+        },
+        link: function (scope,element,attrs) {
+            window.Hammer(element[0]).on("tap",function(){
+                scope.$apply(function(){scope.toggleAct()});
+            });
+        }
+    }
+});
 
 

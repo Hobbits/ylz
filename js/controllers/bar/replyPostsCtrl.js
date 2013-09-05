@@ -16,7 +16,6 @@ app.controller("replyPostsCtrl",function($scope,AJAX,paginationServ,loadingPromp
 
         var newajax=AJAX({
             url: APP_ACTION["postsURL"]+param,
-            cache: true,
             bCall:function(){loadingPromp.open('加载列表...')},
             sCall: function (d) {
                 console.log(d);

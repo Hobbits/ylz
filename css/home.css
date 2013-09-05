@@ -24,7 +24,22 @@ img {border:none;}
 #hex li a:hover b{border-bottom-color: #45cccb;}
 #hex li a:hover span{background:#45cccb;}
 #hex li a:hover em{border-top-color:#45cccb;}
-
+/*新评论提示*/
+#new-comment-tips {
+    position: absolute;
+    bottom: 0em;
+    right: 0em;
+    width: 5em;
+    height: 5em;
+    background: #428BCA;
+    border-top-left-radius: 5em;
+    -webkit-border-top-left-radius: 5em;
+}
+#new-comment-tips span {
+    position: absolute;
+    left: 1.8em;
+    top: 2.5em;
+}
 /* 窗口宽度在480px以下 */
 @media screen and (max-width:480px){
     #hex{font-size:0.9em}

@@ -41,6 +41,11 @@ app.config(function($routeProvider) {
                 pageTitle:"产品详情"
 
             })
+            .when("/morePic", {
+                templateUrl: "content/morePic.html",
+                pageTitle:"产品图片",
+                transition: "modal"
+            })
             .when("/companycard", {
                 templateUrl: "content/companyCard.html",
                 pageTitle:"企业名片",
@@ -100,14 +105,14 @@ app.config(function($routeProvider) {
             })
             .when("/replyPosts/:postId", {
                 templateUrl: "content/bar/replyPosts.html",
-                pageTitle:"我发过的贴",
+                pageTitle:"我的发表",
                 transition: "slide",
                 controller:'replyPostsCtrl',
                 resolve: validateLogin
             })
             .when("/sendPosts/:postId", {
                 templateUrl: "content/bar/sendPosts.html",
-                pageTitle:"我回复的贴",
+                pageTitle:"我的回复",
                 transition: "slide",
                 controller:'replyPostsCtrl',
                 resolve: validateLogin

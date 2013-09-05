@@ -1,7 +1,7 @@
 
 /*吸附式二级导航*/
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .content {
         overflow:hidden;
         -webkit-overflow-scrolling: auto;

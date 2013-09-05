@@ -2,7 +2,7 @@
 <html ng-app="myApp">
 <head>
     <meta charset="utf-8" />
-    <link rel="apple-touch-icon-precomposed" href="favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="icon.png">
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="application-name" content="银离子课堂" />
 
@@ -47,7 +47,7 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
 
-        <p hm-tap="historyBack()" touchact="skew"
+        <p hm-tap="historyBack()" touchact="skew3"
            ng-if="tt.bTitle" class="navbar-text pull-left my_backbtn">
             <a><span class="glyphicon glyphicon-chevron-left"></span>{{tt.bTitle}}</a>
         </p>
@@ -83,7 +83,7 @@
                 <a nav-to="/news">新闻资讯</a>
             </li>
             <li ng-class="navActiveClass[4]">
-                <a nav-to="/news">互动专区</a>
+                <a nav-to="/barList">互动专区</a>
             </li>
         </ul>
 
@@ -144,6 +144,7 @@
 <script defer src="js/controllers/goodsCtrl.js"></script>
 <script defer src="js/controllers/goodslistCtrl.js"></script>
 <script defer src="js/controllers/goodsDetailCtrl.js"></script>
+<script defer src="js/controllers/morePicCtrl.js"></script>
 
 <script defer src="js/controllers/cardCtrl.js"></script>
 <script defer src="js/controllers/infoCtrl.js"></script>
@@ -159,7 +160,6 @@
 <script defer src="js/controllers/bar/postlistCtrl.js"></script>
 <script defer src="js/controllers/bar/addnewpost.js"></script>
 <script defer src="js/controllers/bar/postviewCtrl.js"></script>
-<script defer src="js/controllers/bar/toggleReply.js"></script>
 <script defer src="js/controllers/bar/addnewcomm.js"></script>
 <script defer src="js/controllers/bar/replyPostsCtrl.js"></script>
 

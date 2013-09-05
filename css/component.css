@@ -90,9 +90,44 @@ a.activeLink:hover {
     -webkit-margin-end: 0px;
     font-weight: bold;
 }
-.skew{
-    -webkit-transform: rotateX(10deg);
-    transform: rotateX(10deg);
-    -webkit-transform: rotateY(18deg);
-    transform: rotateY(18deg);
+.skew1{
+    transform-origin:right bottom;
+    -webkit-transform-origin:right bottom;
+    transform:perspective(300px) rotateX(10deg) rotateY(-3deg);
+    -webkit-transform:perspective(300px) rotateX(10deg) rotateY(-3deg);
+}
+
+.skew2{
+    transform-origin:left bottom;
+    -webkit-transform-origin:left bottom;
+    transform: perspective(300px) rotateX(10deg) rotateY(3deg);
+    -webkit-transform: perspective(300px) rotateX(10deg) rotateY(3deg);
+}
+.skew3{
+    transform-origin:right center;
+    -webkit-transform-origin:right center;
+    transform: perspective(300px) rotateX(0deg) rotateY(-10deg);
+    -webkit-transform: perspective(300px) rotateX(0deg) rotateY(-10deg);
+}
+.skew4{
+    transform:scale(0.95);
+    -webkit-transform:scale(0.95);
+}
+.skew5{
+    transform-origin:left center;
+    -webkit-transform-origin:left center;
+    transform: perspective(300px) rotateX(0deg) rotateY(10deg);
+    -webkit-transform: perspective(300px) rotateX(0deg) rotateY(10deg);
+}
+.skew6{
+    transform-origin:right top;
+    -webkit-transform-origin:right top;
+    transform: perspective(300px) rotateX(-10deg) rotateY(-3deg);
+    -webkit-transform: perspective(300px) rotateX(-10deg) rotateY(-3deg);
+}
+.skew7{
+    transform-origin:left top;
+    -webkit-transform-origin:left top;
+    transform: perspective(300px) rotateX(-10deg) rotateY(3deg);
+    -webkit-transform: perspective(300px) rotateX(-10deg) rotateY(3deg);
 }

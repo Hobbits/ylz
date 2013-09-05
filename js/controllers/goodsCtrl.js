@@ -1,7 +1,7 @@
-app.controller("goodsCtrl", function($scope,loadingPromp,AJAX,CacheLocal){
+app.controller("goodsCtrl", function($scope,loadingPromp,AJAX){
     var ajax1=AJAX({
         url: APP_ACTION["goodsURL"],
-        cache:CacheLocal,
+        cache:true,
         bCall: function () {
             loadingPromp.open("正在加载...");
         },

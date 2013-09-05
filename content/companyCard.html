@@ -65,6 +65,14 @@
         box-shadow: 3px 3px 10px black;
     }
 
+    @media all and (orientation:portrait){
+        #landscapeView{display: none;}
+    }
+
+    @media all and (orientation:landscape){
+        #portraitView{display: none;}
+    }
+
     /*#corner{*/
         /*position: absolute;*/
         /*right: 0;bottom: 0;*/
@@ -87,17 +95,35 @@
         </div>
     </div>
 
-    <div class="flip" >
+    <div id="portraitView" class="flip" >
         <div class="card" ng-class="{'true':'flipped', 'false':''}[front]">
-            <div id='summ' class="face front">
+            <div class="face front">
                 <img src="images/card/s2.jpg" usemap="#cor">
             </div>
-            <div id='info' class="face back">
-                <img id="justgetStyle" src="images/card/s1.jpg" usemap="#cor">
+            <div class="face back">
+                <img class="justgetStyle" src="images/card/s1.jpg" usemap="#cor">
             </div>
             <map name="cor">
-                <area id="area_a" hm-tap="goin(front)" shape="poly" coords="0,1,1,0,1,2"/>
-                <area id="area_b" hm-tap="front=!front" alt="点此翻转" shape="poly" coords="0,1,1,0,1,2"/>
+                <area class="area1" id="area_a" hm-tap="goin(front)" shape="poly" coords="0,1,1,0,1,2"/>
+                <area class="area2" id="area_b" hm-tap="front=!front" alt="点此翻转" shape="poly" coords="0,1,1,0,1,2"/>
+            </map>
+
+            <!--<aside id="corner"> </aside>-->
+        </div>
+    </div>
+
+
+    <div id="landscapeView" class="flip" >
+        <div class="card" ng-class="{'true':'flipped', 'false':''}[front]">
+            <div class="face front">
+                <img src="images/card/2.jpg" usemap="#cor2">
+            </div>
+            <div class="face back">
+                <img class="justgetStyle" src="images/card/1.jpg" usemap="#cor2">
+            </div>
+            <map name="cor2">
+                <area class="area1" id="area_a2" hm-tap="goin(front)" shape="poly" coords="0,1,1,0,1,2"/>
+                <area class="area2" id="area_b2" hm-tap="front=!front" alt="点此翻转" shape="poly" coords="0,1,1,0,1,2"/>
             </map>
 
             <!--<aside id="corner"> </aside>-->
@@ -106,16 +132,27 @@
 
      <script>
          (function(){
-             var img=$("#justgetStyle");
-             var setMap=function(){
-                 var x=img.width();
-                 var y=img.height();
-                 var corz_a=[0,y,0,0,x,0,x,y/2].join(",");
-                 var corz_b=[0,y,x,y,x,y/2].join(",");
-                 console.log(x,y,$('area'));
-                 $('#area_a').prop('coords',corz_a);
-                 $('#area_b').prop('coords',corz_b);
-                 console.log('resize');
+             var img=$(".justgetStyle");
+
+             var setMap=function(o){
+                     var img= $(o.target);
+                     if(!img.hasClass('justgetStyle')){
+                         img=$('.justgetStyle:visible');
+                     }
+                     var parentObj=img.parentsUntil('.flip');
+                     var x=img.width();
+                     var y=img.height();
+                     if(x<y){
+                         var corz_a=[0,y,0,0,x,0,x,y/2].join(",");
+                         var corz_b=[0,y,x,y,x,y/2].join(",");
+                     }else{
+                         var corz_a=[0,y,0,0,x,0,x/3,y].join(",");
+                         var corz_b=[x/3,y,x,y,x,0].join(",");
+                     }
+                     window['p']=parentObj.find('.area1');
+                     parentObj.find('.area1').prop('coords',corz_a);
+                     parentObj.find('.area2').prop('coords',corz_b);
+
              }
              img.on('load',setMap);
 

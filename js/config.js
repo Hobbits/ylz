@@ -1,5 +1,6 @@
 var APP_ACTION = {
     imgdir:IMG_SERVER_ROOT+'uploads/',
+    commentTipURL: SERVER + "/Community/get_remind", /*消息提示*/
     goodsURL : SERVER + '/Product_category/get_all',
     goodslistURL : SERVER + '/Product/get_by_category/', /*商品列表*/
     goodsDetailURL : SERVER + '/Product/get_detail/',   /*商品详情*/
@@ -20,5 +21,9 @@ var APP_ACTION = {
     addcommentURL:SERVER+'/Community/add_comment/',/*发表回帖*/
     getcommentURL:SERVER+'/Community/get_comments/',/*回帖列表*/
     postsURL: SERVER + '/Community/' /*发过的帖子和回复的帖子*/
-}
+};
+
+var isAndroid=(function(){
+    return navigator.userAgent.indexOf("Android") > 0;
+})();
 

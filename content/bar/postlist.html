@@ -4,10 +4,11 @@
       font-size:inherit;
     }
     #forumbgBlock{
-        margin-top: -0.8em;
+        position: relative;
+        margin-top: -5%;
         margin-right: -0.8em;
         margin-left: -0.8em;
-        height: 15em;
+        height: 90%;
         background-position: 50% 0;
         background-size: cover;
         background-repeat: repeat-x;
@@ -25,9 +26,25 @@
         text-align: right;
     }
     .none{
-        width: 0 !important;height: 0 !important;
+        visibility: hidden;
         background:none;
         position: absolute;
+    }
+    #forumTitle{
+        position: absolute;
+        bottom: 50%;
+        text-align: center;
+        width: 100%;
+        /*transform: translate3d(0, 0px, 0);*/
+        /*-webkit-transform: translate3d(0, 0px, 0);*/
+    }
+    #forumTitle h2{
+        color: #ffffff;
+        font-size: 2em;
+        font-weight: bold;
+        display: inline;
+        padding: 0.2em;
+        box-shadow: 0 0 5px black;
     }
 
 </style>
@@ -36,6 +53,9 @@
     <div id="forumbgBlock" class="pureBlock"
          ng-class="{true:'', false:'none'}[postlist.length>5]"
          ng-style="forumbgStyle">
+        <div id="forumTitle" class="pureBlock">
+            <h2 class="blueBack5" ng-if="forumTitle">{{forumTitle}}</h2>
+        </div>
 
     </div>
 
@@ -46,46 +66,9 @@
                 {{post.subject | truncate:60}}
             </h4>
             <p class="lefttext">
-                <span class="icon-chat" ng-class="{true:'carrotText', false:''}[post.personnum>10]"></span>
+                <span class="icon-chat" ng-class="{true:'carrotText', false:''}[post.comment_num>10]"></span>
                 {{post.comment_num}}</p>
             <p class="listtext list-group-item-text">{{post.create_time}}</p>
         </a>
     </div>
 </div>
-
-
-<script>
-    (function(window,$){
-        var boxObj=$("#forumbgBlock");
-        var boxstartHeight=boxObj.height(); /*开始高度*/
-        var boxbgStartY=0;
-        var boxstartOpacity=1;
-        var CONV=boxstartHeight/15 || 14;
-        var boxbgEndY=-CONV*5;/*结束高度*/
-        var boxendOpacity=0;
-        var maxScroll=CONV*8;
-
-        $("#postlistContent").on('scroll',function(e){
-            var scrollTop=this.scrollTop;
-
-            if(scrollTop<maxScroll){
-                var percent=scrollTop/maxScroll;
-
-                var getNowValue=function(startv,endv,percent){
-                    return startv-((startv-endv)*percent);
-                }
-
-                var boxbgnowY=getNowValue(boxbgStartY,boxbgEndY,percent);
-                var boxnowOpacity=getNowValue(boxstartOpacity,boxendOpacity,percent);
-                boxObj.css({
-                    'backgroundPosition':'50% '+boxbgnowY+'px',
-                    'opacity':boxnowOpacity
-                })
-
-            }
-
-        });
-
-    })(window,$)
-
-</script>

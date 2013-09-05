@@ -8,6 +8,16 @@
 #postWrap{
     border: 1px solid #e5e5e5;
 }
+@media (min-width: 768px) {
+    #postWrap {
+        width: 70%;
+        margin: 0 auto;
+        font-size: 1.25em;
+        border: 3px solid #e5e5e5;
+    }
+    #topcat{text-align: center}
+}
+
 #postWrap header{
     padding: .8em .8em 0 .8em;
 }
@@ -67,4 +77,9 @@
 
 #trueComment .toggleInner{
     font-size: 1.5em;
+}
+
+#loadmore{
+    min-height: 2.5em;
+    text-align: center;
 }

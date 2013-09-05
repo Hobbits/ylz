@@ -63,7 +63,7 @@ app.controller("loginCtrl",function($scope,AJAX,loadingPromp,alertBox,goHome,$ti
                    } else {
                        $localStorage.userLoginInfo = "";
                    }
-                   $localStorage.userInfo = p;          
+                   $localStorage.userInfo = p;
                    $timeout(function(){
                        loginAlertMsg.hide();
                        goHome();

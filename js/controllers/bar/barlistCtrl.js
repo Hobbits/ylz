@@ -13,7 +13,10 @@ app.controller("barlistCtrl", function($scope,AJAX,loadingPromp,$sessionStorage)
 
                      for(f in d.result){
                          var fobj=d.result[f];
-                         $sessionStorage['forumlist'+fobj.fid]=$scope.imgURL+fobj.image;
+                         $sessionStorage['forumlist'+fobj.fid]={
+                             bg:$scope.imgURL+fobj.image || 'images/forumdefaultbg.jpg',
+                             title:fobj.name || '帖子列表'
+                         };
                      }
 
                  }

@@ -1,4 +1,4 @@
-app.controller("newsDetailCtrl",function($scope,$routeParams,loadingPromp,AJAX,CacheLocal,headerChanger){
+app.controller("newsDetailCtrl",function($scope,$routeParams,loadingPromp,AJAX,headerChanger){
     var ajax1=AJAX({
         url: APP_ACTION["newsDetailURl"] + $routeParams.newsId,
         cache: true,

@@ -145,7 +145,7 @@ app.factory('headerBtnServ', function($rootScope){
 
 
 
-app.factory('AJAX', function($http,$q,$navigate,$localStorage){
+app.factory('AJAX', function($http,$q,$navigate,$localStorage,$sessionStorage){
     /*url p bCall sCall eCall*/
     var send=function(o){
 
@@ -185,6 +185,7 @@ app.factory('AJAX', function($http,$q,$navigate,$localStorage){
                 if (status == 401) {
                     try{
                         delete $localStorage.userInfo;
+                        $sessionStorage.$reset();
                     }catch(e){};
                     $navigate.go('/login'+status,null,true);
                 }

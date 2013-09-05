@@ -1,4 +1,4 @@
-app.controller("centerCtrl",function($scope,loadingPromp,AJAX,$navigate,$localStorage){
+app.controller("centerCtrl",function($scope,loadingPromp,AJAX,$navigate,$localStorage,$sessionStorage){
     $scope.imgdir =APP_ACTION.imgdir;
     var ajax1=AJAX({
         url: APP_ACTION["centerURL"],
@@ -6,7 +6,6 @@ app.controller("centerCtrl",function($scope,loadingPromp,AJAX,$navigate,$localSt
             loadingPromp.open("正在进入个人中心...");
         },
         sCall: function (d) {
-            console.log(d);
             if(d && d.status == "ok"){
                 $scope.user = d.result;
                 $scope.posts = d.remark;
@@ -25,6 +24,7 @@ app.controller("centerCtrl",function($scope,loadingPromp,AJAX,$navigate,$localSt
                 console.log(d);
                 if(d && d.status == "ok"){
                     delete $localStorage.userInfo;
+                    $sessionStorage.$reset();
                     $navigate.go('/');
                 }
             }

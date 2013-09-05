@@ -16,53 +16,22 @@
         <div class="col-md-6">
             <h3 style="text-align:center;">{{goodsDetail.title}}</h3>
             <p style="color:orangered;">{{goodsDetail.intro}}</p>
-            <p><span class="label label-info">促销：</span><span style="color:orangered; font-weight:900;"> ￥{{goodsDetail.price}}</span></p>
+            <p><span class="label label-info">售价：</span><span style="color:orangered; font-weight:900;"> ￥{{goodsDetail.price}}</span></p>
             <p data-ng-bind-html="goodsDetail.detail">
             </p><p>
             <div class="flexbox-center">
-            <div class="btn-group">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#morePic">更多图片</button>
-                    <div class="btn-group dropup">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            联系客服
-                        </button>
-                        <ul class="dropdown-menu" style="margin-bottom:2px;">
-                            <li ><a class="icon-home">小王</a></li>
-                            <li class="divider"></li>
-                            <li><a class="icon-home">小李</a></li>
-                        </ul>
-                    </div>
-                    <div class="btn-group dropup">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            一键分享
-                        </button>
-                        <ul class="dropdown-menu" style="margin-bottom:2px;">
-                            <li><a class="icon-home">TX</a></li>
-                            <li class="divider"></li>
-                            <li><a class="icon-home">Sina</a></li>
-                        </ul>
-                    </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary" nav-to="/morePic">更多图片</button>
+                    <button type="button" id="customer" class="btn btn-default" data-toggle="popover" data-animation="false" data-placement="top" data-html="true" data-content="{{customer}}">
+                        &nbsp;&nbsp;客　服&nbsp;&nbsp;
+                    </button>
                 </div>
             </div>
             </p>
         </div>
     </div>
-
-
-    <!-- Modal -->
-    <div class="modal fade" data-backdrop="false" id="morePic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header" style="text-align:right;">
-                    <button class="btn btn-default" onclick="$('#morePic').modal('hide');">关闭</button>
-                    <button class="btn btn-primary" hm-tap="showImg(1)">上一张</button>
-                    <button class="btn btn-primary" hm-tap="showImg(2)">下一张</button>
-                </div>
-                <div class="modal-body" style="padding-left: 2px;padding-right: 2px;" id="modal-body">
-                    <img ng-src="{{imgdir + imgURL}}" />
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
+<script type="text/javascript">
+    $('#customer').popover({})
+</script>
