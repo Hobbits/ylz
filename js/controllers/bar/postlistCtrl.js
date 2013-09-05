@@ -67,7 +67,7 @@ app.controller("postlistCtrl",function($scope,$routeParams,$sessionStorage,loadi
 
     var parallaxed=false;
     var setParallax=function(){
-        if(parallaxed && isAndroid){return}
+        if(parallaxed || isAndroid){return}
         (function(window,$){
             var boxObj=$("#forumbgBlock");
             if(boxObj && boxObj[0].style){

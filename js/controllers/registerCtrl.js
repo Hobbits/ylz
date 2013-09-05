@@ -6,7 +6,7 @@ app.controller("registerCtrl",function($scope,$http,loadingPromp,$timeout,alertB
     $scope.regSubmit = function() {
         regForm = document.getElementById("regForm");
         formdata = new FormData(regForm);
-        loadingPromp.open("正在注册...");
+//        loadingPromp.open("正在注册...");
         changeBtn("注册中",true);
         ajax1 = $http.post(APP_ACTION["registerURL"], formdata, {
             headers: { 'Content-Type': false },
@@ -40,7 +40,7 @@ app.controller("registerCtrl",function($scope,$http,loadingPromp,$timeout,alertB
                         });
                     }
                 }
-                loadingPromp.close();
+//                loadingPromp.close();
                 changeBtn("注册",true);
             }).error(function(data, status, headers, config) {
                 if(regAlert){
@@ -53,7 +53,7 @@ app.controller("registerCtrl",function($scope,$http,loadingPromp,$timeout,alertB
                         "dismissable":false
                     });
                 }
-                loadingPromp.close();
+//                loadingPromp.close();
                 changeBtn("注册",true);
             });
     }

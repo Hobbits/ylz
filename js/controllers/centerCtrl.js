@@ -3,7 +3,7 @@ app.controller("centerCtrl",function($scope,loadingPromp,AJAX,$navigate,$localSt
     var ajax1=AJAX({
         url: APP_ACTION["centerURL"],
         bCall: function () {
-            loadingPromp.open("正在进入个人中心...");
+//            loadingPromp.open("正在进入个人中心...");
         },
         sCall: function (d) {
             if(d && d.status == "ok"){

@@ -51,7 +51,7 @@ app.controller("loginCtrl",function($scope,AJAX,loadingPromp,alertBox,goHome,$ti
            p: p,
            method: "POST",
            bCall: function () {
-               loadingPromp.open("正在登录...");
+//               loadingPromp.open("正在登录...");
                changeBtn("登录中",true);
            },
            sCall: function (d) {
@@ -74,7 +74,7 @@ app.controller("loginCtrl",function($scope,AJAX,loadingPromp,alertBox,goHome,$ti
                }
            },
            cCall: function () {
-               loadingPromp.close();
+//               loadingPromp.close();
            },
            eCall:function(){
                loginAlertMsg.change("登录失败！","danger");
