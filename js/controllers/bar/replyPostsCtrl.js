@@ -77,32 +77,6 @@ app.controller("replyPostsCtrl",function($scope,AJAX,paginationServ,loadingPromp
         }
     });
 
-
-    $scope.$on('$destroy',function(){
-        paginationServ.toogle($scope,false);
-        /*取消全部ajax*/
-        angular.forEach(ajaxquery, function(ajaxobj){
-            try{ajaxobj.resolve();}catch(e){}
-        });
-    })
-
-
-
-
-    $scope.$on('pagination',function(evt,o){
-        /*被点击上一页或下一页事件*/
-        if(o && o.where && o.curpageNum){
-            var newPageNum= o.curpageNum;
-            if(o.where=="next"){
-                newPageNum++;
-            }else if(o.where=="pre"){
-                newPageNum--;
-            }
-            getAct(newPageNum);
-        }
-    });
-
-
     $scope.$on('$destroy',function(){
         paginationServ.toogle($scope,false);
         /*取消全部ajax*/
@@ -111,7 +85,5 @@ app.controller("replyPostsCtrl",function($scope,AJAX,paginationServ,loadingPromp
         });
 
     })
-
-
 })
 

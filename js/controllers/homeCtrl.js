@@ -1,6 +1,7 @@
 app.controller("homeCtrl",function($scope,$localStorage,$http,headerChanger){
+    var ajax1;
     var getCommentTip = function(){
-        $http({
+        ajax1 = $http({
             method: 'GET',
             url: APP_ACTION["commentTipURL"]
         }).success(function(d) {
@@ -15,6 +16,10 @@ app.controller("homeCtrl",function($scope,$localStorage,$http,headerChanger){
         })
     };
 
+    if(angular.isDefined($localStorage.userInfo)){
+        getCommentTip();
+    }
+
     var naved=false;
     $scope.$on('$pageNaved',function(){
         if(naved){return}
@@ -22,8 +27,8 @@ app.controller("homeCtrl",function($scope,$localStorage,$http,headerChanger){
         headerChanger.send({pageTitle: '银离子课堂'});
     });
 
-    if(angular.isDefined($localStorage.userInfo)){
-        getCommentTip();
-    }
+    $scope.$on('$destroy',function(e){
+        try{ajax1.resolve()}catch(e){}
+    })
 
 })

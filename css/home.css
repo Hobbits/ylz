@@ -9,7 +9,7 @@ img {border:none;}
     margin-left: -11.62em;margin-top: -11.62em;
     padding:0;
     /*margin:50% auto;*/
-    list-style:none; width:23.214em; font-size:0.9em; }
+    list-style:none; width:23.214em; font-size:0.85em; }
 #hex li{display:block;float:left;width:7.428em;margin-right:0.285em;height:8.571em; box-sizing: content-box; -webkit-box-sizing: content-box; -moz-box-sizing: content-box;}
 
 #hex li.p1{padding-left:3.857em;}
@@ -34,6 +34,7 @@ img {border:none;}
     background: #428BCA;
     border-top-left-radius: 5em;
     -webkit-border-top-left-radius: 5em;
+
 }
 #new-comment-tips span {
     position: absolute;
@@ -42,13 +43,13 @@ img {border:none;}
 }
 /* 窗口宽度在480px以下 */
 @media screen and (max-width:480px){
-    #hex{font-size:0.9em}
+    #hex{font-size:0.85em}
 }
 /* 窗口宽度在480px以上、768px以下 */
 @media screen and (min-width: 481px) and (max-width: 767px){
-    #hex{font-size:1.3em}
+    #hex{font-size:1.2em}
 }
 /* 窗口宽度在768pxpx以上 */
 @media (min-width: 768px) {
-    #hex{font-size:1.7em}
+    #hex{font-size:1.5em}
 }

@@ -32,8 +32,10 @@ app.controller("centerCtrl",function($scope,loadingPromp,AJAX,$navigate,$localSt
     }
     
     $scope.$on('$destroy',function(e){
-        ajax1.resolve();
-        try{ajax2.resolve();}catch(e){}
+        try{
+            ajax1.resolve();
+            ajax2.resolve();
+        }catch(e){}
     })
     
 })

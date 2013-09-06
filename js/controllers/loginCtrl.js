@@ -84,7 +84,6 @@ app.controller("loginCtrl",function($scope,AJAX,loadingPromp,alertBox,goHome,$ti
     }
 
     $scope.$on('$destroy',function(e){
-            try{ajax1.resolve();}catch(e){}
-
+        try{ajax1.resolve();}catch(e){}
     })
 })

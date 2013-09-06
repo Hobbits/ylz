@@ -1,9 +1,9 @@
 app.controller("barlistCtrl", function($scope,AJAX,loadingPromp,$sessionStorage){
 
     $scope.imgURL=APP_ACTION['imgdir'];
-
+    var newajax;
      var getList=function(pagenum){
-         var newajax=AJAX({
+         newajax=AJAX({
              url: APP_ACTION["forumURL"],
              cache: true,
              bCall:function(){loadingPromp.open('加载列表...')},
@@ -30,5 +30,7 @@ app.controller("barlistCtrl", function($scope,AJAX,loadingPromp,$sessionStorage)
 
     getList(1);
 
-
+    $scope.$on('$destroy',function(e){
+        newajax.resolve();
+    })
 })

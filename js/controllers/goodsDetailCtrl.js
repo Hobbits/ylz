@@ -2,7 +2,6 @@ app.controller("goodsDetailCtrl", function($scope,loadingPromp,headerChanger,ale
     var goodsId = $routeParams.goodsId;
     var all_imgURL = [];
     $scope.imgdir =APP_ACTION.imgdir;
-
     var naved=false;
     $scope.$on('$pageNaved',function(){
         if(naved){return}
@@ -42,17 +41,12 @@ app.controller("goodsDetailCtrl", function($scope,loadingPromp,headerChanger,ale
                         'type':'danger'
                     });
                 }
-
             }
         })
-
-
-        $scope.$on('$destroy',function(e){
-            try{ajax1.resolve();}catch(e){}
-        })
-
-
     })
 
+    $scope.$on('$destroy',function(e){
+        try{ajax1.resolve();}catch(e){}
+    })
 })
 

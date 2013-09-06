@@ -1,7 +1,8 @@
 app.controller("knowledgeCtrl",function($scope,loadingPromp,AJAX){
     $scope.knowledge={};
+    var ajax1;
     var getAct=function(index){
-        AJAX({
+        ajax1 = AJAX({
             url: APP_ACTION["knowledgeURL"] + index,
             cache: true,
             bCall: function () {
@@ -25,4 +26,8 @@ app.controller("knowledgeCtrl",function($scope,loadingPromp,AJAX){
     $scope.getContent = function(i){
         getAct(i);
     }
+    $scope.$on('$destroy',function(e){
+        try{ajax1.resolve()}catch(e){}
+    })
+
 })

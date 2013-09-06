@@ -14,6 +14,6 @@ app.controller("goodsCtrl", function($scope,loadingPromp,AJAX){
     });
 
     $scope.$on('$destroy',function(e){
-        ajax1.resolve();
+         try{ajax1.resolve();}catch(e){}
     })
 })

@@ -2,7 +2,7 @@ app.controller("goodslistCtrl", function($scope,$routeParams,loadingPromp,AJAX,a
 
     var goodslistId = $routeParams.goodslistId;
     $scope.imgdir = APP_ACTION.imgdir;
-    AJAX({
+    var ajax1 = AJAX({
         url: APP_ACTION["goodslistURL"] + goodslistId,
         cache:true,
         bCall: function () {
@@ -40,6 +40,10 @@ app.controller("goodslistCtrl", function($scope,$routeParams,loadingPromp,AJAX,a
                 'type':'danger'
             });
         }
+    })
+
+    $scope.$on('$destroy',function(e){
+        try{ajax1.resolve();}catch(e){}
     })
 
 })

@@ -21,6 +21,7 @@ app.controller("postviewCtrl",function($scope,$routeParams,loadingPromp,$session
             url:APP_ACTION.getcommentURL+tid+'/'+pagenum+"/"+$scope.loadmore.paginal,
             bCall:function(){
                 $scope.loadmore.isloading=true;
+                $scope.loadmore.standbyText="载入中";
             },
             sCall: function (d) {
                 if(d.status == "ok") {
@@ -55,9 +56,6 @@ app.controller("postviewCtrl",function($scope,$routeParams,loadingPromp,$session
     $scope.loadmore.Act=function(){
         getComments(postid,commentCurPage+1);
     }
-
-
-
 
     var ajax1=AJAX({
         url:APP_ACTION['postviewURL']+String(postid),
