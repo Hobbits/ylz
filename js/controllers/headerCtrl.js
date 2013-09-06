@@ -21,7 +21,7 @@ app.controller("headerCtrl",function($scope,$rootScope,$navigate,headerBtnServ){
 
 
         $scope.tt.pTitle=curRoute.$$route['pageTitle'];
-        if(curPageRole=="main"){
+        if(curPageRole=="nav0"){/*是主页*/
             navHistory=$navigate.eraseHistory('page',curRoute);
         }
         var l=navHistory.length;

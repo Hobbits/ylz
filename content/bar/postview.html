@@ -84,9 +84,9 @@
                </li>
 
                <li id="loadmore" hm-tap="loadmore.Act()">
-                   <span class="icon-spin3" ng-class="{true:'animate-spin',false:''}[isloading]"></span>
-                   <span ng-show="isloading">载入中...</span>
-                   <span ng-show="!isloading">{{loadmore.standbyText}}</span>
+                   <div>
+                       <span class="icon-spin3" ng-class="{true:'animate-spin',false:''}[loadmore.isloading]"></span>{{loadmore.standbyText}}
+                   </div>
                </li>
 
            </ul>

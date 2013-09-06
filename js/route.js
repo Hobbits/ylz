@@ -120,7 +120,6 @@ app.config(function($routeProvider) {
             .when("/", {
                 templateUrl: "content/home.html",
                 pageRole:"nav0",
-                pageRole:"main",
                 pageTitle:"首页"
             })
             .otherwise({

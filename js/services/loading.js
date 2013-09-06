@@ -40,7 +40,7 @@
 app.factory('loadingPromp', function() {
 
     var timmer={
-        delay:500,
+        delay:2900,
         date:null,
         timeoutId:null
     };
