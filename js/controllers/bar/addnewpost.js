@@ -32,18 +32,18 @@ app.controller("addnewpostCtrl",function($timeout,$scope,AJAX,goHome,alertBox,lo
     ajaxlist.push(getbarListAjax);
 
 
-
     $scope.sendnewPost=function(){
         var p=$scope.postPrams;
         p.fid=$scope.postPrams.forumSelect.fid;
         delete p.forumSelect;
 
-        var loginAlertMsg = alertBox.show({
-            'where':document.getElementById('loginAlert'),
-            "dismissable":false,
-            "html": ""
-        });
-
+        if(!angular.isObject(loginAlertMsg)){
+            var loginAlertMsg = alertBox.show({
+                'where':document.getElementById('loginAlert'),
+                "dismissable":false,
+                "html": ""
+            });
+        }
         var postingajax=AJAX({
             url: APP_ACTION["newpostURL"],
             p:p,

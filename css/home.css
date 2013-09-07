@@ -39,16 +39,17 @@ img {border:none;}
     position: absolute;
     bottom: 0em;
     right: 0em;
-    width: 5em;
-    height: 5em;
-    background: #428BCA;
-    border-top-left-radius: 5em;
-    -webkit-border-top-left-radius: 5em;
+    width: 4em;
+    height: 4em;
+    background: #3498DB;
+    border-top-left-radius: 4em;
+    -webkit-border-top-left-radius: 4em;
 }
 #new-comment-tips span {
     position: absolute;
-    left: 1.8em;
-    top: 2.5em;
+    left: 1em;
+    top: 1.8em;
+    color: #ffffff;
 }
 /* 窗口宽度在480px以下 */
 @media screen and (max-width:480px){
