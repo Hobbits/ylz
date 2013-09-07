@@ -46,6 +46,17 @@ a:focus{color: #428bca;}
         background-position: 0 100%
     }
 }
+#water{
+    position: fixed;
+    left: 0;right: 0;bottom: 0;
+    height: 6.5em;
+    /*#EEF8FE*/
+    background: url('../images/wtbg.png') repeat-x 50% 100%;
+    background-size: auto 100%;
+    -webkit-animation: animate-cloud 35s linear infinite;
+    animation: animate-cloud 35s linear infinite;
+    opacity: 0.8;
+}
 @media screen and (min-width: 768px){
     #water{
         -webkit-animation: none;
@@ -111,7 +122,6 @@ a:focus{color: #428bca;}
     padding: 15px 15px;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 0;margin-bottom: 0;
     font-size: 18px;
     font-weight: 500;
     line-height: 20px;
