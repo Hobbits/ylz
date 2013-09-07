@@ -1,20 +1,28 @@
 app.controller("centerCtrl",function($scope,loadingPromp,AJAX,$navigate,$localStorage,$sessionStorage){
-    $scope.imgdir =APP_ACTION.imgdir;
-    var ajax1=AJAX({
-        url: APP_ACTION["centerURL"],
-        bCall: function () {
+    var ajax1;
+    var naved=false;
+    $scope.$on('$pageNaved',function(){
+        if(naved){return}
+        naved = true;
+        $scope.imgdir =APP_ACTION.imgdir;
+        ajax1=AJAX({
+            url: APP_ACTION["centerURL"],
+            bCall: function () {
 //            loadingPromp.open("正在进入个人中心...");
-        },
-        sCall: function (d) {
-            if(d && d.status == "ok"){
-                $scope.user = d.result;
-                $scope.posts = d.remark;
+            },
+            sCall: function (d) {
+                if(d && d.status == "ok"){
+                    $scope.user = d.result;
+                    $scope.posts = d.remark;
+                }
+            },
+            cCall: function () {
+//            loadingPromp.close();
             }
-        },
-        cCall: function () {
-            loadingPromp.close();
-        }
+        });
     });
+
+
 
     var ajax2;
     $scope.logout = function() {

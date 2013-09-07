@@ -16,30 +16,40 @@ img {border:none;}
 #hex li.p2{margin-top:-1.857em;}
 
 #hex li a{text-decoration:none;color:#000;cursor:pointer;}
-#hex li a b{display:block;width:0;height:0;overflow:hidden;border-bottom:2.142em solid #428bca;border-left:3.714em dotted transparent;border-right:3.714em dotted transparent;}
-#hex li a span{display:block;width:7.428em;height:4.285em;text-align:center;background:#428bca; line-height:4.285em;}
-#hex li a em{display:block;width:0;height:0;overflow:hidden;border-top:2.142em  solid #428bca;border-left:3.714em dotted transparent;border-right:3.714em dotted transparent;}
+#hex li a b{display:block;width:0;height:0;overflow:hidden;border-bottom:2.142em solid #3498DB;border-left:3.714em dotted transparent;border-right:3.714em dotted transparent;}
+#hex li a span{display:block;width:7.428em;height:4.285em;text-align:center;background:#3498DB; line-height:4.285em; color:#ECF0F1; font-weight: bold;}
+#hex li a em{display:block;width:0;height:0;overflow:hidden;border-top:2.142em  solid #3498DB;border-left:3.714em dotted transparent;border-right:3.714em dotted transparent;}
 
 #hex li a:hover{white-space:normal;color:#fff;}
 #hex li a:hover b{border-bottom-color: #45cccb;}
 #hex li a:hover span{background:#45cccb;}
 #hex li a:hover em{border-top-color:#45cccb;}
+#hex [class^="icon-"]:before,#hex [class*=" icon-"]:before {
+    font-size: 2.5em;
+    display: block;
+    width: 3em;
+    text-align: center;
+    line-height: 0.3em;
+    margin-right: 0em;
+    margin-left: 0em;
+    padding-top: 0.3em;
+}
 /*新评论提示*/
 #new-comment-tips {
     position: absolute;
     bottom: 0em;
     right: 0em;
-    width: 5em;
-    height: 5em;
-    background: #428BCA;
-    border-top-left-radius: 5em;
-    -webkit-border-top-left-radius: 5em;
-
+    width: 4em;
+    height: 4em;
+    background: #3498DB;
+    border-top-left-radius: 4em;
+    -webkit-border-top-left-radius: 4em;
 }
 #new-comment-tips span {
     position: absolute;
-    left: 1.8em;
-    top: 2.5em;
+    left: 1em;
+    top: 1.8em;
+    color: #ffffff;
 }
 /* 窗口宽度在480px以下 */
 @media screen and (max-width:480px){
