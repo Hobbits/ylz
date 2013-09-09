@@ -70,8 +70,7 @@ app.config(function($routeProvider) {
             .when("/knowledge", {
                 templateUrl: "content/knowledge.html",
                 pageTitle:"银离子知识",
-                transition: "slide",
-                reverse: false
+                transition: "slide"
             })
             .when("/summary", {
                 templateUrl: "content/summary.html",

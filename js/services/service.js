@@ -187,7 +187,7 @@ app.factory('AJAX', function($http,$q,$navigate,$localStorage,$sessionStorage){
                         delete $localStorage.userInfo;
                         $sessionStorage.$reset();
                     }catch(e){};
-                    $navigate.go('/login'+status,null,true);
+                    $navigate.go('/login'+status,'modal',true);
                 }
             });
 

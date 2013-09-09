@@ -73,7 +73,7 @@ app.controller("headerCtrl",function($scope,$rootScope,$navigate,headerBtnServ){
 
     $scope.historyBack=function(){
         if(curPageRole=="login"){
-            $navigate.go('/');
+            $navigate.go('/','modal',true);
         }else{
             $navigate.back(true);
         }

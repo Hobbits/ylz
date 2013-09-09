@@ -27,7 +27,7 @@ app.controller("addnewcommCtrl",function($timeout,$scope,AJAX,$sessionStorage,go
                 $scope.submittingText="成功!";
                 $timeout(function(){
                     if(!$navigate.back()){
-                        goHome();
+                        $navigate.go('/','modal',true);
                     }
                 },1000);
             },

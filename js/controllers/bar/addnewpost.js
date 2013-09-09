@@ -59,7 +59,7 @@ app.controller("addnewpostCtrl",function($timeout,$scope,AJAX,goHome,alertBox,lo
 
                     $timeout(function(){
                         if(!$navigate.back()){
-                            goHome();
+                            $navigate.go('/','modal',true);
                         }
                     },1000);
                     loginAlertMsg.change("发表成功!","success");

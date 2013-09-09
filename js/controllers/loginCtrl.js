@@ -70,7 +70,7 @@ app.controller("loginCtrl",function($scope,AJAX,loadingPromp,alertBox,goHome,$ti
                    $localStorage.userInfo = p;
                    $timeout(function(){
                        loginAlertMsg.hide();
-                       goHome();
+                       $navigate.go('/','modal',true);
                    },1000);
                } else {
                    loginAlertMsg.change(d.result,"danger");
