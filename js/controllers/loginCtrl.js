@@ -3,22 +3,26 @@ app.controller("loginCtrl",function($scope,AJAX,loadingPromp,alertBox,goHome,$ti
     $scope.form = {};
     $scope.form.rememberPsw = true; //默认记住密码
 
-    var naved=false;
-    $scope.$on('$pageNaved',function(){
-        loginAlert = document.getElementById('loginAlert');
-        if(naved){return}
-        if(angular.isDefined($routeParams.code)){
-            if($routeParams.code==401){
-                loginAlertMsg = alertBox.show({
-                    'where': loginAlert,
-                    "dismissable":false,
-                    "type":"danger",
-                    "html": "您尚未登录或账号已过期！"
-                });
+
+    $scope.$on('$pageNaved',(function(){
+        var naved=false;
+        return function(){
+            loginAlert = document.getElementById('loginAlert');
+            if(naved){return}
+            if(angular.isDefined($routeParams.code)){
+                if($routeParams.code==401){
+                    loginAlertMsg = alertBox.show({
+                        'where': loginAlert,
+                        "dismissable":false,
+                        "type":"danger",
+                        "html": "您尚未登录或账号已过期！"
+                    });
+                }
             }
-        }
-        naved=true;
-    })
+            naved=true;
+        };
+
+    })());
 
     var changeBtn=function(text,bol){
         $scope.subBtn={isOff:bol,submitText:text};

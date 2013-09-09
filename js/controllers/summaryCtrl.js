@@ -1,21 +1,5 @@
 app.controller("summaryCtrl",function($scope,loadingPromp,AJAX){
 
-//    var naved=false;
-//    $scope.$on('$pageNaved',function(){
-//        if(naved){return}
-//        naved=true;
-//        var sw1=new myswipe({
-//            jqo:document.getElementById('tabcWrap'),
-//            actThreshold:1,
-//            XThreshold:1,
-//            touchEndCall:function(result,dv){
-//                alert(result);
-//            }
-//        });
-//    })
-
-
-
     $scope.summary={}
 
     var ajaxlast={};

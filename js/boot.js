@@ -1,5 +1,5 @@
 /*启动angular*/
-var app=angular.module('myApp', ['ngSanitize','regou.ajaxNormalizer','ajoslin.mobile-navigate','hmTouchEvents','Cacher','ngStorage']);
+var app=angular.module('ylz', ['ngSanitize','regou.ajaxNormalizer','ajoslin.mobile-navigate','hmTouchEvents','ngStorage']);
 
 
 app.config(function($httpProvider,$compileProvider) {

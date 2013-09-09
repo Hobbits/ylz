@@ -20,12 +20,15 @@ app.controller("homeCtrl",function($scope,$localStorage,$http,headerChanger){
         getCommentTip();
     }
 
-    var naved=false;
-    $scope.$on('$pageNaved',function(){
-        if(naved){return}
-        naved=true;
-        headerChanger.send({pageTitle: '银离子课堂'});
-    });
+
+    $scope.$on('$pageNaved',(function(){
+        var naved=false;
+        return function(){
+            if(naved){return}
+            naved=true;
+            headerChanger.send({pageTitle: '银离子课堂'});
+        };
+    })());
 
     $scope.$on('$destroy',function(e){
         try{ajax1.resolve()}catch(e){}

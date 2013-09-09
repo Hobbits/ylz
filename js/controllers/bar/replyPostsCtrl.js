@@ -49,18 +49,22 @@ app.controller("replyPostsCtrl",function($scope,AJAX,paginationServ,loadingPromp
             return null;
         }
     }
-    var naved=false;
-    $scope.$on('$pageNaved',function(){
-        if(naved){return}
-        var pageNum;
-        if(postId == 1){
-            pageNum = getPostsCache("sendPostsCache") || 1;
-        } else if(postId == 2) {
-            pageNum = getPostsCache("replyPostsCache") || 1;
-        }
-        getAct(pageNum);
-        naved = true;
-    });
+
+    $scope.$on('$pageNaved',(function(){
+        var naved=false;
+        return function(){
+            if(naved){return}
+            naved = true;
+            var pageNum;
+            if(postId == 1){
+                pageNum = getPostsCache("sendPostsCache") || 1;
+            } else if(postId == 2) {
+                pageNum = getPostsCache("replyPostsCache") || 1;
+            }
+            getAct(pageNum);
+        };
+
+    })());
 
 
 

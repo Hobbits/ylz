@@ -41,18 +41,20 @@ app.controller("newsCtrl",function($scope,AJAX,paginationServ,loadingPromp,$sess
     }
 
     /*页面启动*/
-    var naved=false;
-    $scope.$on('$pageNaved',function(){
-        if(naved){return}
-        naved = true;
-        var catIndex= 1;
-        var pageNum=1;
-        if(angular.isDefined($sessionStorage.newsListViewCache)){
-            catIndex=$sessionStorage.newsListViewCache['catIndex'] || 1;
-            pageNum=$sessionStorage.newsListViewCache['pageNum'] || 1;
-        }
-        getAct(catIndex,pageNum);
-    });
+    $scope.$on('$pageNaved',(function(){
+        var naved=false;
+        return function(){
+            if(naved){return}
+            naved = true;
+            var catIndex= 1;
+            var pageNum=1;
+            if(angular.isDefined($sessionStorage.newsListViewCache)){
+                catIndex=$sessionStorage.newsListViewCache['catIndex'] || 1;
+                pageNum=$sessionStorage.newsListViewCache['pageNum'] || 1;
+            }
+            getAct(catIndex,pageNum);
+        };
+    })());
 
 
     $scope.getContent = function(index) {
@@ -73,7 +75,6 @@ app.controller("newsCtrl",function($scope,AJAX,paginationServ,loadingPromp,$sess
 
     $scope.$on('pagination',function(evt,o){
         /*被点击上一页或下一页事件*/
-        console.log(o);
         if(o && o.where && o.curpageNum){
 
             var newPageNum= o.curpageNum;
