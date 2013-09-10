@@ -49,9 +49,16 @@
 }
 .toggleInner{
     font-size: 2em;
+    position: relative;
+    height: 100%;
+    display: table;
 }
+
 .toggleInner>a{
     margin: auto 0.5em;
+    display: table-cell;
+    height: 100%;
+    vertical-align:middle;
 }
 
 #postersMessage{
