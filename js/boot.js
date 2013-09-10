@@ -62,7 +62,7 @@ app.directive("togglereplybtn",function(){
             };
         },
         link: function (scope,element,attrs) {
-            window.Hammer(element[0]).on("tap",function(){
+            element.bind("click",function(){
                 scope.$apply(function(){scope.toggleAct()});
             });
         }
