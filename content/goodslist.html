@@ -4,17 +4,14 @@
        #goodslistContent{
            padding-top:4em;
        }
-        #goodslistContent .col2{
-            -webkit-columns:2;
-            columns:2;
-        }
+
     }
 </style>
 <div ng-controller="goodslistCtrl" id="goodslistContent" class="content" scrollable>
     <div id='glAlert' class="pureBlock">
 
     </div>
-    <div class="list-group" ng-class="col">
+    <div class="list-group">
 
             <a class="list-group-item" data-ng-repeat="g in goodslist" nav-to="/goodsDetail/{{g.id}}">
                 <div class="media">

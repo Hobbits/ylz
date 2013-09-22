@@ -21,9 +21,6 @@ app.controller("goodslistCtrl", function($scope,$routeParams,loadingPromp,AJAX,a
                         'type':''
                     });
                 }
-                if(d.result.length>=4){
-                    $scope.col="col2";
-                }
 
             }else{
                alertBox.show({
