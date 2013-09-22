@@ -1,4 +1,4 @@
-app.controller("goodsCtrl", function($scope,loadingPromp,AJAX){
+app.controller("goodsCtrl", function($scope,loadingPromp,AJAX,alertBox){
     var ajax1=AJAX({
         url: APP_ACTION["goodsURL"],
         cache:true,
@@ -10,6 +10,13 @@ app.controller("goodsCtrl", function($scope,loadingPromp,AJAX){
         },
         cCall: function () {
             loadingPromp.close();
+        },
+        eCall:function(){
+            alertBox.show({
+                'where':document.getElementById('statusAlert'),
+                'html':"链接错误，获取信息失败！",
+                'type':'danger'
+            });
         }
     });
 

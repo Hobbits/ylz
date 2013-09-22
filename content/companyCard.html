@@ -131,7 +131,7 @@
     </div>
 
      <script>
-         (function(){
+         (function(window,$){
              var img=$(".justgetStyle");
 
              var setMap=function(o){
@@ -149,11 +149,10 @@
                          var corz_a=[0,y,0,0,x,0,x/3,y].join(",");
                          var corz_b=[x/3,y,x,y,x,0].join(",");
                      }
-                     window['p']=parentObj.find('.area1');
                      parentObj.find('.area1').prop('coords',corz_a);
                      parentObj.find('.area2').prop('coords',corz_b);
 
-             }
+             };
              img.on('load',setMap);
 
              window.addEventListener('resize',setMap);
@@ -162,7 +161,7 @@
                  window.removeEventListener('resize',setMap);
              })
 
-         })(window,$)
+         })(window,jQuery)
 
      </script>
 

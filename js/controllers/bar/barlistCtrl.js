@@ -1,4 +1,4 @@
-app.controller("barlistCtrl", function($scope,AJAX,loadingPromp,$sessionStorage){
+app.controller("barlistCtrl", function($scope,AJAX,alertBox,loadingPromp,$sessionStorage){
 
     $scope.imgURL=APP_ACTION['imgdir'];
     var newajax;
@@ -24,7 +24,13 @@ app.controller("barlistCtrl", function($scope,AJAX,loadingPromp,$sessionStorage)
              cCall: function () {
                  loadingPromp.close();
              },
-             eCall:function(){}
+             eCall:function(){
+                 alertBox.show({
+                     'where':document.getElementById('barAlert'),
+                     'html':"链接错误，获取信息失败！",
+                     'type':'danger'
+                 });
+             }
          });
      };
 

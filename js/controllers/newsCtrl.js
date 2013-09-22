@@ -1,4 +1,4 @@
-app.controller("newsCtrl",function($scope,AJAX,paginationServ,loadingPromp,$sessionStorage){
+app.controller("newsCtrl",function($scope,AJAX,paginationServ,alertBox,loadingPromp,$sessionStorage){
     $scope.news = {};
     var paginal=7;/*每页多少条*/
 
@@ -33,7 +33,13 @@ app.controller("newsCtrl",function($scope,AJAX,paginationServ,loadingPromp,$sess
             cCall: function () {
                 loadingPromp.close();
             },
-            eCall:function(){}
+            eCall:function(){
+                alertBox.show({
+                    'where':document.getElementById('statusAlert'),
+                    'html':"链接错误，获取信息失败！",
+                    'type':'danger'
+                });
+            }
         });
         $sessionStorage.newsListViewCache={catIndex:catIndex,pageNum:pageNum};
         ajaxquery.push(newajax);
