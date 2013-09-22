@@ -64,6 +64,7 @@ img {border:none;}
     #hex{font-size:1.5em}
 }
 
+/*
 @media (max-height: 600px) {
     #hex{
         position: static;top:0;left: 0;
@@ -73,3 +74,4 @@ img {border:none;}
     }
 
 }
+*/
