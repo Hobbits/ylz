@@ -5,7 +5,7 @@
             }
 
         </style>
-<div ng-controller="goodsDetailCtrl" class="content">
+<div ng-controller="goodsDetailCtrl" class="contentNoWebkitTouch">
 
 
         <div id='gdAlert' class="pureBlock">
@@ -13,11 +13,15 @@
         </div>
 
         <div class="thumbnail row">
-        <div id="goodImgWrap" class="col-md-6 text-center">
+        <div class="col-md-6 text-center">
             <img ng-src="{{imgdir + goodsDetail.img1}}">
         </div>
         <div class="col-md-6">
             <h3 style="text-align:center;">{{goodsDetail.title}}</h3>
+            <p style="color:orangered;">{{goodsDetail.intro}}</p>
+            <p><span class="label label-info">售价：</span><span style="color:orangered; font-weight:900;"> ￥{{goodsDetail.price}}</span></p>
+            <p data-ng-bind-html="goodsDetail.detail">
+            </p><p>
             <div class="flexbox-center">
                 <div class="btn-group">
                     <button type="button" class="btn btn-primary" nav-to="/morePic">更多图片</button>
@@ -26,13 +30,7 @@
                     </button>
                 </div>
             </div>
-            <p style="color:orangered;">{{goodsDetail.intro}}</p>
-            <p><span class="label label-info">售价：</span><span style="color:orangered; font-weight:900;"> ￥{{goodsDetail.price}}</span></p>
-
-            <p data-ng-bind-html="goodsDetail.detail">
             </p>
-
-
         </div>
     </div>
 </div>

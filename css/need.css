@@ -67,7 +67,7 @@ a:focus{color: #428bca;}
     /*position: absolute;*/
     /*z-index: 1039;*/
 /*}*/
-.content {
+.content,.contentNoWebkitTouch {
     background-color: #FFF;
     margin: 0;
     width: 100%;
@@ -80,13 +80,14 @@ a:focus{color: #428bca;}
 
     overflow-y: scroll;
     overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
 
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     padding: .8em;
 }
+.content{-webkit-overflow-scrolling: touch;}
+.contentNoWebkitTouch{-webkit-overflow-scrolling: auto;}
 
 .my_backbtn{
     height: 50px;
