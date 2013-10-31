@@ -18,7 +18,7 @@ app.directive("navTo",['$navigate', function($navigate){
     return {
         restrict: 'A',
         link: function (scope,element,attrs) {
-            window.Hammer(element[0]).on("tap",function(){
+            var tapAct=function(){
                 var path=attrs['navTo'];
                 var animate=attrs.ani;
                 if(path=='back'){
@@ -32,7 +32,15 @@ app.directive("navTo",['$navigate', function($navigate){
                     }
 
                 }
-            });
+            };
+
+            if(window.navigator.msPointerEnabled){
+                element.bind("MSPointerUp",tapAct);
+            }else{
+                Hammer(element[0]).on("tap",tapAct);
+            }
+
+
         }
     }
 }]);
@@ -43,7 +51,10 @@ app.directive("touchact",function(){
         link: function (scope,element,attrs) {
             var classname=attrs['touchact'] || 'navfocus';
             element.bind("touchstart",function(){
-                try{this.classList.add(classname);}catch(e){}
+                var cl=this.classList;
+                try{cl.add(classname);
+                    setTimeout(function(){cl.remove(classname)},300);
+                }catch(e){}
             });
             element.bind("touchend",function(){
                 try{this.classList.remove(classname);}catch(e){}
